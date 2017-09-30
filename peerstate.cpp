@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 
-PeerState::PeerState()
+PeerState::PeerState(QObject *parent):QObject(parent)
 {
     setState(initializing);
     setEventCount(0);

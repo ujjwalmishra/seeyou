@@ -1,13 +1,13 @@
 #ifndef PEERSTATE_H
 #define PEERSTATE_H
-
+#include <QObject>
 #include "states.h"
 
-class PeerState
+class PeerState: public QObject
 {
 
 public:
-    PeerState();
+    PeerState(QObject* parent = 0);
     void setState(states state);
     void setEventCount(int count);
 

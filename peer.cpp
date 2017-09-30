@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 
-Peer::Peer()
+Peer::Peer(QObject *parent):QObject(parent)
 {
     generatePeerId();
 
@@ -18,9 +18,9 @@ void Peer::generatePeerId()
     }
 }
 
-void Peer::setPeerState(PeerState stt)
+void Peer::setPeerState(PeerState& stte)
 {
-    state = stt;
+    state = &stte;
 }
 
 
