@@ -3,14 +3,13 @@
 
 #include "states.h"
 
-class PeerState : public QDialog
+class PeerState
 {
-    Q_OBJECT
 
 public:
-    explicit PeerState(QWidget *parent = Q_NULLPTR);
-    enum states setState(enum states state);
-    int setEventCount(int count);
+    PeerState();
+    void setState(states state);
+    void setEventCount(int count);
 
 private:
     enum states state;

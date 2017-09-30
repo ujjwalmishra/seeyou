@@ -29,7 +29,8 @@ SOURCES += \
     seeyouserver.cpp \
     seeyouserverthread.cpp \
     seeyouclient.cpp \
-    peerstate.cpp
+    peerstate.cpp \
+    peer.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -37,7 +38,10 @@ HEADERS += \
     seeyouserverthread.h \
     seeyouclient.h \
     peerstate.h \
-    states.h
+    states.h \
+    statediscoverer.h \
+    peer.h \
+    statesender.h
 
 FORMS += \
         mainwindow.ui

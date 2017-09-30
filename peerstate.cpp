@@ -4,18 +4,18 @@
 #include <stdlib.h>
 
 
-PeerState::PeerState(QObject *parent)
+PeerState::PeerState()
 {
-    eventCount(0);
-    state(initializing);
+    setState(initializing);
+    setEventCount(0);
 }
 
-PeerState::setEventCount(int count)
+void PeerState::setEventCount(int count)
 {
     eventCount = count;
 }
 
-PeerState::setState(enum states stte)
+void PeerState::setState(enum states stte)
 {
     state = stte;
 }
