@@ -30,7 +30,8 @@ SOURCES += \
     seeyouserverthread.cpp \
     seeyouclient.cpp \
     peerstate.cpp \
-    peer.cpp
+    peer.cpp \
+    statediscoverer.cpp
 
 HEADERS += \
         mainwindow.h \

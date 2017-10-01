@@ -14,7 +14,7 @@ public:
     PeerState getPeerState();
 
 
-private:
+public:
     QUuid peerid ;
     PeerState* state;
 };
