@@ -3,6 +3,7 @@
 #include "ui_mainwindow.h"
 #include "statediscoverer.h"
 #include "event.h"
+#include "statereciever.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -46,6 +47,12 @@ void MainWindow::addTask()
 void MainWindow::initBroadCastPeerState()
 {
     connect(ui->connectPushButton, SIGNAL( clicked() ), discoverer, SLOT( broadcastDatagram() )  );
+}
+
+void MainWindow::initReciever()
+{
+    rcvr = new Receiver();
+    rcvr->init();
 }
 
 void MainWindow::initPeerState()

@@ -17,7 +17,9 @@ int main(int argc, char *argv[])
         w.setCheckBox( conn.flag);
         w.setProgressBar(conn.flag);
     }
+    w.initReciever();
     w.initBroadCastPeerState();
+
 
     return a.exec();
 }

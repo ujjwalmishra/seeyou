@@ -20,6 +20,12 @@ Receiver::Receiver(QWidget *parent)
 
 }
 
+void Receiver::init()
+{
+    connect(udpSocket, SIGNAL(readyRead()),
+            this, SLOT(processPendingDatagrams()));
+}
+
 void Receiver::processPendingDatagrams()
 {
 //! [2]

@@ -7,6 +7,7 @@
 #include "peerstate.h"
 #include <QVector>
 #include "event.h"
+#include "statereciever.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +26,7 @@ public:
     void initBroadCastPeerState();
     void initPeerState();
     void initPeer();
+    void initReciever();
 
 public slots:
     void addTask();
@@ -35,6 +37,7 @@ private:
     Peer *peer;
     PeerState *pState;
     QVector<Event*> events;
+    Receiver *rcvr;
 };
 
 #endif // MAINWINDOW_H
