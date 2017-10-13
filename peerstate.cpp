@@ -10,9 +10,27 @@ PeerState::PeerState(QObject *parent):QObject(parent)
     setEventCount(0);
 }
 
+PeerState::~PeerState()
+{
+    delete peerstate;
+}
+
 void PeerState::setEventCount(int count)
 {
     eventCount = count;
+}
+
+void PeerState::initState()
+{
+    if(peerstate != nullptr)
+    {
+        peerstate = new PeerState();
+    }
+}
+
+static PeerState* getSInstance()
+{
+    return peerstate;
 }
 
 void PeerState::setState(enum states stte)

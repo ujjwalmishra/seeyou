@@ -1,5 +1,5 @@
 
-
+#include <QDataStream>
 #include "peer.h"
 #include <stdlib.h>
 
@@ -21,6 +21,20 @@ void Peer::generatePeerId()
 void Peer::setPeerState(PeerState& stte)
 {
     state = &stte;
+}
+
+QDataStream & Peer::operator<<(QDataStream &out, const Peer &s)
+{
+    //out << s.ID << s.Name;
+    return out;
+}
+
+// istream, >> overloading
+QDataStream & Peer::operator>>(QDataStream &in, Peer &s)
+{
+    s = Peer();
+    //in >> s.ID >> s.Name;
+    return in;
 }
 
 

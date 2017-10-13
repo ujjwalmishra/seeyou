@@ -3,6 +3,7 @@
 #include "peerstate.h"
 #include <QUuid>
 #include <QObject>
+#include <QDataStream>
 
 class Peer: public QObject
 {
@@ -12,6 +13,8 @@ public:
     void generatePeerId();
     void setPeerState(PeerState& state);
     PeerState getPeerState();
+    QDataStream & operator<<(QDataStream &out, const Peer &s);
+    QDataStream & operator>>(QDataStream &in, Peer &s);
 
 
 public:

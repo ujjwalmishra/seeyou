@@ -33,7 +33,8 @@ SOURCES += \
     peer.cpp \
     statediscoverer.cpp \
     event.cpp \
-    statereciever.cpp
+    statereciever.cpp \
+    selfstateupdater.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -46,7 +47,8 @@ HEADERS += \
     peer.h \
     statesender.h \
     event.h \
-    statereciever.h
+    statereciever.h \
+    selfstateupdater.h
 
 FORMS += \
         mainwindow.ui \
