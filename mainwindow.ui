@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QCheckBox" name="statusConnectionBox">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -27,7 +27,7 @@
      <string>Server up and running on port 11111</string>
     </property>
    </widget>
-   <widget class="QProgressBar" name="progressBar">
+   <widget class="QProgressBar" name="statusProgressBar">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -40,7 +40,7 @@
      <number>24</number>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="connectPushButton">
     <property name="geometry">
      <rect>
       <x>40</x>

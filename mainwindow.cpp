@@ -18,7 +18,7 @@ MainWindow::~MainWindow()
 bool MainWindow::setCheckBox( bool flag)
 {
     Qt::CheckState state=flag?Qt::Checked:Qt::Unchecked;
-    ui->checkBox->setCheckState(state);
+    ui->statusConnectionBox->setCheckState(state);
 
     return true;
 }
@@ -26,14 +26,14 @@ bool MainWindow::setCheckBox( bool flag)
 bool MainWindow::setProgressBar(bool flag)
 {
     int value=flag?100:0;
-    ui->progressBar->setValue(value);
+    ui->statusProgressBar->setValue(value);
 
     return true;
 }
 
 void MainWindow::initBroadCastPeerState()
 {
-    connect(ui->pushButton, SIGNAL( clicked() ), discoverer, SLOT( broadcastDatagram() )  );
+    connect(ui->connectPushButton, SIGNAL( clicked() ), discoverer, SLOT( broadcastDatagram() )  );
 }
 
 void MainWindow::initPeerState()
