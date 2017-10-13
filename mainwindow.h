@@ -5,6 +5,8 @@
 #include "statediscoverer.h"
 #include "peer.h"
 #include "peerstate.h"
+#include <QVector>
+#include "event.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,11 +26,15 @@ public:
     void initPeerState();
     void initPeer();
 
+public slots:
+    void addTask();
+
 private:
     Ui::MainWindow *ui;
     StateDiscoverer *discoverer;
     Peer *peer;
     PeerState *pState;
+    QVector<Event*> events;
 };
 
 #endif // MAINWINDOW_H

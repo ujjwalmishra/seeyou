@@ -1,13 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "statediscoverer.h"
+#include "event.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow), events()
 {
     ui->setupUi(this);
     discoverer = new StateDiscoverer();
+    connect(ui->addButton, &QPushButton::clicked,
+       this, &MainWindow::addTask);
 }
 
 MainWindow::~MainWindow()
@@ -29,6 +32,14 @@ bool MainWindow::setProgressBar(bool flag)
     ui->statusProgressBar->setValue(value);
 
     return true;
+}
+
+void MainWindow::addTask()
+{
+    qDebug() << "Adding new task";
+    Event* event = new Event("Untitled Event");
+    events.append(event);
+    ui->verticalLayout->addWidget(event);
 }
 
 void MainWindow::initBroadCastPeerState()
