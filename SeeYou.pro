@@ -32,7 +32,8 @@ SOURCES += \
     peerstate.cpp \
     peer.cpp \
     statediscoverer.cpp \
-    event.cpp
+    event.cpp \
+    statereciever.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,7 +45,8 @@ HEADERS += \
     statediscoverer.h \
     peer.h \
     statesender.h \
-    event.h
+    event.h \
+    statereciever.h
 
 FORMS += \
         mainwindow.ui \
