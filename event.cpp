@@ -1,7 +1,7 @@
 #include "event.h"
 #include "ui_event.h"
 
-Event::Event(QWidget *parent) :
+Event::Event(const QString& name, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Event)
 {
@@ -14,12 +14,12 @@ Event::~Event()
     delete ui;
 }
 
-void Task::setName(const QString& name)
+void Event::setName(const QString& name)
 {
-    ui->checkBox->setText(name);
+    ui->label->setText(name);
 }
 
-QString Task::name() const
+QString Event::name() const
 {
-    return ui->checkBox->text();
+    return ui->label->text();
 }
