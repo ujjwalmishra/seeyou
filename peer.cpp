@@ -2,11 +2,10 @@
 #include <QDataStream>
 #include "peer.h"
 #include <stdlib.h>
-
+#include <QDebug>
 
 Peer::Peer()
 {
-    generatePeerId();
 
 }
 
@@ -42,11 +41,8 @@ QDataStream& operator<<(QDataStream &out, const Peer &s)
 // istream, >> overloading
 QDataStream& operator>>(QDataStream &in, Peer &s)
 {
-    //s = Peer();
-    QUuid uid;
-    in >> uid;
-    s= Peer(uid);
-    //in >> s.ID >> s.Name;
+    s = Peer();
+    in >> s.peerid;
     return in;
 }
 

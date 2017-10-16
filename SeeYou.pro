@@ -34,7 +34,8 @@ SOURCES += \
     statediscoverer.cpp \
     event.cpp \
     statereciever.cpp \
-    selfstateupdater.cpp
+    selfstateupdater.cpp \
+    seeyouserver.cpp
 
 HEADERS += \
         mainwindow.h \

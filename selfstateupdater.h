@@ -12,7 +12,7 @@ public:
     ~StateUpdater();
     void initSelfState();
     void setState(enum states state);
-    Peer getState();
+    Peer& getState();
 
 private:
     Peer *peer;

@@ -20,7 +20,7 @@ public:
 
 
 public:
-    QUuid peerid ;
+    QUuid peerid;
     PeerState* state;
 };
 

@@ -26,4 +26,9 @@ void StateUpdater::setState(enum states state)
     peerState->setState(state);
 }
 
+Peer& StateUpdater::getState()
+{
+    return *peer;
+}
+
 
