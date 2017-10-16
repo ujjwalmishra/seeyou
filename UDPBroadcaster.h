@@ -1,7 +1,7 @@
 #ifndef STATEDISCOVERER_H
 #define STATEDISCOVERER_H
 
-#include "peer.h"
+#include "PeerInfo.h"
 #include <QTime>
 #include <QTimer>
 

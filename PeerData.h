@@ -1,7 +1,7 @@
 #ifndef PEERSTATE_H
 #define PEERSTATE_H
 #include <QObject>
-#include "states.h"
+#include "PeerStates.h"
 
 class PeerState: public QObject
 {

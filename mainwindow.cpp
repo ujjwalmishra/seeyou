@@ -1,9 +1,9 @@
 #include <QDebug>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "statediscoverer.h"
-#include "event.h"
-#include "statereciever.h"
+#include "UDPBroadcaster.h"
+#include "Event.h"
+#include "UDPReceiver.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

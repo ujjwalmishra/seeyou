@@ -26,30 +26,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    seeyouserver.cpp \
-    seeyouserverthread.cpp \
-    seeyouclient.cpp \
-    peerstate.cpp \
-    peer.cpp \
-    statediscoverer.cpp \
-    event.cpp \
-    statereciever.cpp \
     selfstateupdater.cpp \
-    seeyouserver.cpp
+    Event.cpp \
+    PeerInfo.cpp \
+    PeerData.cpp \
+    TCPClient.cpp \
+    TCPServer.cpp \
+    ServerThreader.cpp \
+    UDPBroadcaster.cpp \
+    UDPReceiver.cpp \
+    PeerEvent.cpp \
+    CoreApp.cpp
 
 HEADERS += \
         mainwindow.h \
-    seeyouserver.h \
-    seeyouserverthread.h \
-    seeyouclient.h \
-    peerstate.h \
-    states.h \
-    statediscoverer.h \
-    peer.h \
-    statesender.h \
-    event.h \
-    statereciever.h \
-    selfstateupdater.h
+    selfstateupdater.h \
+    TCPServer.h \
+    CoreApp.h \
+    Event.h \
+    PeerStates.h \
+    TCPClient.h \
+    PeerInfo.h \
+    ServerThreader.h \
+    UDPBroadcaster.h \
+    PeerData.h \
+    UDPReceiver.h \
+    Database.h \
+    PeerEvent.h
 
 FORMS += \
         mainwindow.ui \

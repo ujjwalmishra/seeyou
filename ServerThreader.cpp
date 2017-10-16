@@ -1,4 +1,4 @@
-#include "seeyouserverthread.h"
+#include "ServerThreader.h"
 
 #include <QtNetwork>
 

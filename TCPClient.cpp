@@ -3,7 +3,7 @@
 #include <QtWidgets>
 #include <QtNetwork>
 
-#include "seeyouclient.h"
+#include "TCPClient.h"
 
 //! [0]
 Client::Client(QWidget *parent)

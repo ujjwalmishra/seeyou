@@ -1,6 +1,6 @@
 #ifndef PEERS_H
 #define PEERS_H
-#include "peerstate.h"
+#include "PeerData.h"
 #include <QUuid>
 #include <QObject>
 #include <QDataStream>

@@ -1,8 +1,8 @@
 #ifndef SELFSTATEUPDATER_H
 #define SELFSTATEUPDATER_H
 
-#include "states.h"
-#include "peer.h"
+#include "PeerStates.h"
+#include "PeerInfo.h"
 
 class StateUpdater
 {

@@ -1,7 +1,7 @@
 
 
-#include "seeyouserver.h"
-#include "seeyouserverthread.h"
+#include "TCPServer.h"
+#include "ServerThreader.h"
 #include <QtNetwork>
 #include <stdlib.h>
 
