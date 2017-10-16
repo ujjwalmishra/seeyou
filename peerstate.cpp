@@ -24,11 +24,11 @@ void PeerState::initState()
 {
     if(peerstate != nullptr)
     {
-        peerstate = new PeerState();
+       peerstate = new PeerState();
     }
 }
 
-static PeerState* getSInstance()
+PeerState* PeerState::getSInstance()
 {
     return peerstate;
 }

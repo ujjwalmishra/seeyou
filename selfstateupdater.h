@@ -22,5 +22,3 @@ private:
 
 #endif // PEERSTATE_H
 
-
-#endif // SELFSTATEUPDATER_H

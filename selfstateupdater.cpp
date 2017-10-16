@@ -17,8 +17,8 @@ StateUpdater::~StateUpdater()
 void StateUpdater::initSelfState()
 {
     peer = new Peer();
-    peerState = PeerState.getSInstance();
-    peer->setPeerState(peerState);
+    peerState = PeerState::getSInstance();
+    peer->setPeerState(*peerState);
 }
 
 void StateUpdater::setState(enum states state)

@@ -18,8 +18,11 @@ private:
     enum states state;
     int eventCount;
 
+public:
+    static PeerState* getSInstance();
+
 };
-//! [0]
-static PeerState* getSInstance();
-static PeerState *peerstate;
+
+static PeerState* peerstate;
+
 #endif // PEERSTATE_H
