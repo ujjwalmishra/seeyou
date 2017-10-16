@@ -4,9 +4,19 @@
 #include <stdlib.h>
 
 
-Peer::Peer(QObject *parent):QObject(parent)
+Peer::Peer()
 {
     generatePeerId();
+
+}
+
+Peer::Peer(QUuid uid)
+{
+    peerid = uid;
+}
+
+Peer::~Peer()
+{
 
 }
 
@@ -23,16 +33,19 @@ void Peer::setPeerState(PeerState& stte)
     state = &stte;
 }
 
-QDataStream & Peer::operator<<(QDataStream &out, const Peer &s)
+QDataStream& operator<<(QDataStream &out, const Peer &s)
 {
-    //out << s.ID << s.Name;
+    out << s.peerid;
     return out;
 }
 
 // istream, >> overloading
-QDataStream & Peer::operator>>(QDataStream &in, Peer &s)
+QDataStream& operator>>(QDataStream &in, Peer &s)
 {
-    s = Peer();
+    //s = Peer();
+    QUuid uid;
+    in >> uid;
+    s= Peer(uid);
     //in >> s.ID >> s.Name;
     return in;
 }
