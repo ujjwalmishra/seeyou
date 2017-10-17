@@ -1,4 +1,4 @@
-#include "event.h"
+#include "Event.h"
 #include "ui_event.h"
 
 Event::Event(const QString& name, QWidget *parent) :

@@ -4,36 +4,36 @@
 #include <stdlib.h>
 
 
-PeerState::PeerState(QObject *parent):QObject(parent)
+PeerData::PeerData(QObject *parent):QObject(parent)
 {
-    setState(initializing);
+    //setState(initializing);
     setEventCount(0);
 }
 
-PeerState::~PeerState()
+PeerData::~PeerData()
 {
-    delete peerstate;
+    //delete peerstate;
 }
 
-void PeerState::setEventCount(int count)
+void PeerData::setEventCount(int count)
 {
     eventCount = count;
 }
 
-void PeerState::initState()
-{
-    if(peerstate != nullptr)
-    {
-       peerstate = new PeerState();
-    }
-}
+//void PeerData::initState()
+//{
+//    if(peerstate != nullptr)
+//    {
+//       //peerstate = new PeerState();
+//    }
+//}
 
-PeerState* PeerState::getSInstance()
-{
-    return peerstate;
-}
+//PeerData* PeerData::getSInstance()
+//{
+//    return peerstate;
+//}
 
-void PeerState::setState(enum states stte)
-{
-    state = stte;
-}
+//void PeerState::setState(enum states stte)
+//{
+//    state = stte;
+//}

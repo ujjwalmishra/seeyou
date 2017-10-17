@@ -26,7 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    selfstateupdater.cpp \
     Event.cpp \
     PeerInfo.cpp \
     PeerData.cpp \
@@ -40,11 +39,9 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    selfstateupdater.h \
     TCPServer.h \
     CoreApp.h \
     Event.h \
-    PeerStates.h \
     TCPClient.h \
     PeerInfo.h \
     ServerThreader.h \
@@ -52,7 +49,8 @@ HEADERS += \
     PeerData.h \
     UDPReceiver.h \
     Database.h \
-    PeerEvent.h
+    PeerEvent.h \
+    PeerState.h
 
 FORMS += \
         mainwindow.ui \

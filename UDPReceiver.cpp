@@ -1,8 +1,8 @@
 #include <QtWidgets>
 #include <QtNetwork>
 #include <QDebug>
-#include "peer.h"
-#include "statereciever.h"
+#include "PeerInfo.h"
+#include "UDPReceiver.h"
 
 Receiver::Receiver(QWidget *parent)
     : QWidget(parent)
@@ -32,14 +32,14 @@ void Receiver::processPendingDatagrams()
 
 
     while (udpSocket->hasPendingDatagrams()) {
-        Peer peer;
-        QByteArray datagram;
-        datagram.resize(udpSocket->pendingDatagramSize());        
-        QDataStream in(&datagram, QIODevice::ReadOnly);
-        udpSocket->readDatagram(datagram.data(), datagram.size());
-        in >> peer;
-      //  statusLabel->setText(tr("Received datagram: \"%1\"")
-      //                     .arg(datagram.data()));
+//        Peer peer;
+//        QByteArray datagram;
+//        datagram.resize(udpSocket->pendingDatagramSize());
+//        QDataStream in(&datagram, QIODevice::ReadOnly);
+//        udpSocket->readDatagram(datagram.data(), datagram.size());
+//        in >> peer;
+//      //  statusLabel->setText(tr("Received datagram: \"%1\"")
+//      //                     .arg(datagram.data()));
     }
 
 //! [2]

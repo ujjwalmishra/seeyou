@@ -7,10 +7,10 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow), events()
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    discoverer = new StateDiscoverer();
+    //discoverer = new StateDiscoverer();
     connect(ui->addButton, &QPushButton::clicked,
        this, &MainWindow::addTask);
 }
@@ -39,14 +39,14 @@ bool MainWindow::setProgressBar(bool flag)
 void MainWindow::addTask()
 {
     qDebug() << "Adding new task";
-    Event* event = new Event("Untitled Event");
-    events.append(event);
-    ui->verticalLayout->addWidget(event);
+    //Event* event = new Event("Untitled Event");
+    //events.append(event);
+    //ui->verticalLayout->addWidget(event);
 }
 
 void MainWindow::initBroadCastPeerState()
 {
-    connect(ui->connectPushButton, SIGNAL( clicked() ), discoverer, SLOT( broadcastDatagram() )  );
+//    connect(ui->connectPushButton, SIGNAL( clicked() ), discoverer, SLOT( broadcastDatagram() )  );
 }
 
 void MainWindow::initReciever()
@@ -58,13 +58,13 @@ void MainWindow::initReciever()
 void MainWindow::initPeerState()
 {
     pState = new PeerState;
-    pState->setState(initializing);
-    pState->setEventCount(0);
+   // pState->setState(initializing);
+   // pState->setEventCount(0);
 }
 
 void MainWindow::initPeer() {
-    peer = new Peer();
-    peer->setPeerState(*pState);
+    //peer = new Peer();
+    //peer->setPeerState(*pState);
 }
 
 Ui::MainWindow MainWindow::getUIObject()

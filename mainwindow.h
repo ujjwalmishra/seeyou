@@ -2,12 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "statediscoverer.h"
-#include "peer.h"
-#include "peerstate.h"
+#include "UDPBroadcaster.h"
+#include "PeerInfo.h"
+#include "PeerData.h"
 #include <QVector>
-#include "event.h"
-#include "statereciever.h"
+#include "Event.h"
+#include "UDPReceiver.h"
 
 namespace Ui {
 class MainWindow;
@@ -33,10 +33,9 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
-    StateDiscoverer *discoverer;
-    Peer *peer;
+ //   StateDiscoverer *discoverer;
     PeerState *pState;
-    QVector<Event*> events;
+//    QVector<Event*> events;
     Receiver *rcvr;
 };
 

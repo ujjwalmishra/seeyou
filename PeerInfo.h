@@ -5,23 +5,23 @@
 #include <QObject>
 #include <QDataStream>
 
-class Peer
+class PeerInfo
 {
 
 public:
-    Peer();
-    Peer(QUuid uid);
-    ~Peer();
+    PeerInfo();
+    PeerInfo(QUuid uid);
+    ~PeerInfo();
     void generatePeerId();
-    void setPeerState(PeerState& state);
-    PeerState getPeerState();
-    friend QDataStream & operator<<(QDataStream &out, const Peer &s);
-    friend QDataStream & operator>>(QDataStream &in, Peer &s);
+   // void setPeerState(PeerState& state);
+   // PeerState getPeerState();
+    friend QDataStream & operator<<(QDataStream &out, const PeerInfo &s);
+    friend QDataStream & operator>>(QDataStream &in, PeerInfo &s);
 
 
 public:
     QUuid peerid;
-    PeerState* state;
+    PeerState state;
 };
 
 #endif // PEERS_H

@@ -28,10 +28,6 @@ private slots:
 private:
     QPushButton *startButton;
     QUdpSocket *udpSocket;
-    QTimer *timer;
-    int messageNo;
-    QList<Peer> peers;
-    QTime time;
 };
 
 #endif // STATEDISCOVERER_H

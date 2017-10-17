@@ -1,28 +1,32 @@
 #ifndef PEERSTATE_H
 #define PEERSTATE_H
-#include <QObject>
-#include "PeerStates.h"
 
-class PeerState: public QObject
+
+#include <QUuid>
+#include <QObject>
+#include <QVector>
+#include "PeerState.h"
+#include "PeerEvent.h"
+
+
+class PeerData: public QObject
 {
 
+    //Q_OBJECT
+
 public:
-    PeerState(QObject* parent = 0);
-    ~PeerState();
-    void setState(states state);
+    PeerData(QObject *parent = 0);
+    ~PeerData();
     void setEventCount(int count);
-    void initState();
+    void setUid();
+    QUuid getUid();
+    void addEvent(PeerEvent evnt);
 
 
 private:
-    enum states state;
+    QUuid uid;
+    PeerState state;
     int eventCount;
-
-public:
-    static PeerState* getSInstance();
-
+    QVector<PeerEvent> evnts;
 };
-
-static PeerState* peerstate;
-
 #endif // PEERSTATE_H

@@ -1,6 +1,5 @@
 #include "mainwindow.h"
-#include "seeyouclient.h"
-#include "TCPServer.h"
+#include "CoreApp.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -8,18 +7,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     MainWindow w;
-
+    CoreApp app(w);
     w.show();
-    SeeyouServer server;
-    ServerConn conn = server.connectToPort();
-
-    if(conn.flag) {
-        w.setCheckBox( conn.flag);
-        w.setProgressBar(conn.flag);
-    }
-    w.initReciever();
-    w.initBroadCastPeerState();
-
 
     return a.exec();
 }

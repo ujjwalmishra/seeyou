@@ -1,25 +1,25 @@
 
 #include <QDataStream>
-#include "peer.h"
+#include "PeerInfo.h"
 #include <stdlib.h>
 #include <QDebug>
 
-Peer::Peer()
+PeerInfo::PeerInfo()
 {
 
 }
 
-Peer::Peer(QUuid uid)
+PeerInfo::PeerInfo(QUuid uid)
 {
     peerid = uid;
 }
 
-Peer::~Peer()
+PeerInfo::~PeerInfo()
 {
 
 }
 
-void Peer::generatePeerId()
+void PeerInfo::generatePeerId()
 {
     if(peerid.isNull())
     {
@@ -27,21 +27,21 @@ void Peer::generatePeerId()
     }
 }
 
-void Peer::setPeerState(PeerState& stte)
-{
-    state = &stte;
-}
+//void PeerInfo::setPeerState(PeerState& stte)
+//{
+//    //state = &stte;
+//}
 
-QDataStream& operator<<(QDataStream &out, const Peer &s)
+QDataStream& operator<<(QDataStream &out, const PeerInfo &s)
 {
     out << s.peerid;
     return out;
 }
 
 // istream, >> overloading
-QDataStream& operator>>(QDataStream &in, Peer &s)
+QDataStream& operator>>(QDataStream &in, PeerInfo &s)
 {
-    s = Peer();
+    s = PeerInfo();
     in >> s.peerid;
     return in;
 }
