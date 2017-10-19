@@ -13,9 +13,9 @@ public:
     PeerInfo(QUuid uid);
     ~PeerInfo();
     void generatePeerId();
-   // void setPeerState(PeerState& state);
-   // PeerState getPeerState();
-    friend QDataStream & operator<<(QDataStream &out, const PeerInfo &s);
+    void setPeerState(PeerState state);
+    PeerState getPeerState();
+    friend QDataStream & operator<<(QDataStream &out, PeerInfo &s);
     friend QDataStream & operator>>(QDataStream &in, PeerInfo &s);
 
 

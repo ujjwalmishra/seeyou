@@ -27,14 +27,19 @@ void PeerInfo::generatePeerId()
     }
 }
 
-//void PeerInfo::setPeerState(PeerState& stte)
-//{
-//    //state = &stte;
-//}
-
-QDataStream& operator<<(QDataStream &out, const PeerInfo &s)
+void PeerInfo::setPeerState(PeerState stte)
 {
-    out << s.peerid;
+    state = stte;
+}
+
+PeerState PeerInfo::getPeerState()
+{
+    return state;
+}
+
+QDataStream& operator<<(QDataStream &out, PeerInfo &s)
+{
+    out << s.peerid << s.state;
     return out;
 }
 
@@ -42,7 +47,7 @@ QDataStream& operator<<(QDataStream &out, const PeerInfo &s)
 QDataStream& operator>>(QDataStream &in, PeerInfo &s)
 {
     s = PeerInfo();
-    in >> s.peerid;
+    in >> s.peerid >> s.state;
     return in;
 }
 

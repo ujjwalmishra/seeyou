@@ -3,14 +3,13 @@
 #include "ui_mainwindow.h"
 #include "UDPBroadcaster.h"
 #include "Event.h"
-#include "UDPReceiver.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //discoverer = new StateDiscoverer();
+    discoverer = new UDPBroadcaster();
     connect(ui->addButton, &QPushButton::clicked,
        this, &MainWindow::addTask);
 }
@@ -46,26 +45,9 @@ void MainWindow::addTask()
 
 void MainWindow::initBroadCastPeerState()
 {
-//    connect(ui->connectPushButton, SIGNAL( clicked() ), discoverer, SLOT( broadcastDatagram() )  );
+    connect(ui->connectPushButton, SIGNAL( clicked() ), discoverer, SLOT( broadcastDatagram() )  );
 }
 
-void MainWindow::initReciever()
-{
-    rcvr = new Receiver();
-    rcvr->init();
-}
-
-void MainWindow::initPeerState()
-{
-    pState = new PeerState;
-   // pState->setState(initializing);
-   // pState->setEventCount(0);
-}
-
-void MainWindow::initPeer() {
-    //peer = new Peer();
-    //peer->setPeerState(*pState);
-}
 
 Ui::MainWindow MainWindow::getUIObject()
 {

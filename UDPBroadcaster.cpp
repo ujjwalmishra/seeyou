@@ -7,28 +7,32 @@
 #include <iostream>
 #include <QBuffer>
 #include "PeerInfo.h"
+#include "CoreApp.h"
 
-StateDiscoverer::StateDiscoverer()
+UDPBroadcaster::UDPBroadcaster()
 {
     udpSocket = new QUdpSocket(this);
 }
 
-void StateDiscoverer::initDiscoverer()
+void UDPBroadcaster::initDiscoverer()
 {
 
 }
 
-void StateDiscoverer::broadcastDatagram()
+void UDPBroadcaster::broadcastDatagram()
 {
     qDebug() << "Broadcasting";
 //! [1]
 //    Peer peer;
 //    peer.generatePeerId();
 //    qDebug() << peer.peerid ;
+    CoreApp *app = CoreApp::getObject();
+    PeerInfo peerInfo = app->getPeerInfo();
+    qDebug() << peerInfo.peerid;
     QByteArray datagram;
-//    QDataStream out(&datagram, QIODevice::WriteOnly);
-//    out.setVersion(QDataStream::Qt_5_1);
-//    out << peer;
+    QDataStream out(&datagram, QIODevice::WriteOnly);
+    out.setVersion(QDataStream::Qt_5_1);
+    out << peerInfo;
 
 
     udpSocket->writeDatagram(datagram.data(), datagram.size(),

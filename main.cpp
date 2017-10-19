@@ -7,7 +7,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     MainWindow w;
-    CoreApp app(w);
+    //CoreApp app(w);
+    CoreApp::getObject(w);
     w.show();
 
     return a.exec();

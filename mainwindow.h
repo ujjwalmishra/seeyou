@@ -7,7 +7,6 @@
 #include "PeerData.h"
 #include <QVector>
 #include "Event.h"
-#include "UDPReceiver.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,19 +23,14 @@ public:
     bool setProgressBar(bool flag);
     Ui::MainWindow getUIObject();
     void initBroadCastPeerState();
-    void initPeerState();
-    void initPeer();
-    void initReciever();
+
 
 public slots:
     void addTask();
 
 private:
     Ui::MainWindow *ui;
- //   StateDiscoverer *discoverer;
-    PeerState *pState;
-//    QVector<Event*> events;
-    Receiver *rcvr;
+    UDPBroadcaster *discoverer;
 };
 
 #endif // MAINWINDOW_H

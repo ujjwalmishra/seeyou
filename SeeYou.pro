@@ -35,7 +35,8 @@ SOURCES += \
     UDPBroadcaster.cpp \
     UDPReceiver.cpp \
     PeerEvent.cpp \
-    CoreApp.cpp
+    CoreApp.cpp \
+    peerstate.cpp
 
 HEADERS += \
         mainwindow.h \

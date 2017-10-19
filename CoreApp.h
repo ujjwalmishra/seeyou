@@ -4,17 +4,21 @@
 #include "PeerInfo.h"
 #include "PeerData.h"
 #include "mainwindow.h"
+#include "UDPReceiver.h"
 
 
 class CoreApp {
 
 public:
-    CoreApp();
-    CoreApp(MainWindow &w);
     ~CoreApp();
     void broadCastSelfState(MainWindow &w);
+    PeerInfo & getPeerInfo();
+    static CoreApp *getObject(MainWindow &w);
+    static CoreApp *getObject();
 
 private:
+    CoreApp();
+    CoreApp(MainWindow &w);
     void initApp(MainWindow &w);
     void initTCPServer(MainWindow &w);
     void initSelfState();
@@ -22,6 +26,8 @@ private:
     void initTCPClient();
     PeerInfo *peerInfo;
     PeerData *peerData;
+    Receiver *rcvr;
+    static CoreApp *myInstance;
     //Database
 };
 

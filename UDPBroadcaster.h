@@ -11,11 +11,11 @@ class QTimer;
 class QUdpSocket;
 QT_END_NAMESPACE
 
-class StateDiscoverer: public QObject
+class UDPBroadcaster: public QObject
 {
 Q_OBJECT
 public:
-    StateDiscoverer();
+    UDPBroadcaster();
     void initDiscoverer();
 
 private slots:

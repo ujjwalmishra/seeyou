@@ -3,8 +3,10 @@
 #include "PeerData.h"
 #include "mainwindow.h"
 #include "TCPServer.h"
+#include "CoreApp.h"
+#include "UDPReceiver.h"
 
-
+CoreApp * CoreApp::myInstance = nullptr;
 CoreApp::CoreApp()
 {
 
@@ -21,11 +23,33 @@ CoreApp::~CoreApp()
     delete peerData;
 }
 
+CoreApp* CoreApp::getObject(MainWindow &w)
+{
+    if(myInstance) {
+        return myInstance;
+    }
+    else {
+        myInstance = new CoreApp(w);
+        return myInstance;
+    }
+};
+
+CoreApp* CoreApp::getObject()
+{
+    return myInstance;
+}
+
 void CoreApp::initApp(MainWindow &w)
 {
     initSelfState();
     initTCPServer(w);
+    initStateReceiver();
     broadCastSelfState(w);
+};
+
+PeerInfo & CoreApp::getPeerInfo()
+{
+    return *peerInfo;
 }
 
 void CoreApp::broadCastSelfState(MainWindow &w)
@@ -46,12 +70,15 @@ void CoreApp::initTCPServer(MainWindow &w)
 
 void CoreApp::initSelfState()
 {
-
+    peerInfo = new PeerInfo();
+    peerInfo->generatePeerId();
+    peerInfo->setPeerState(PeerState::MUTATED);
 }
 
 void CoreApp::initStateReceiver()
 {
-   //  w.initReciever();
+    rcvr = new Receiver();
+    rcvr->init();
 }
 
 void CoreApp::initTCPClient()

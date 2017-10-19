@@ -7,7 +7,6 @@
 Receiver::Receiver(QWidget *parent)
     : QWidget(parent)
 {
-
 //! [0]
     udpSocket = new QUdpSocket(this);
     udpSocket->bind(45454, QUdpSocket::ShareAddress);
@@ -30,14 +29,15 @@ void Receiver::processPendingDatagrams()
 {
 //! [2]
 
-
     while (udpSocket->hasPendingDatagrams()) {
-//        Peer peer;
-//        QByteArray datagram;
-//        datagram.resize(udpSocket->pendingDatagramSize());
-//        QDataStream in(&datagram, QIODevice::ReadOnly);
-//        udpSocket->readDatagram(datagram.data(), datagram.size());
-//        in >> peer;
+        PeerInfo peerInfo;
+        QByteArray datagram;
+        datagram.resize(udpSocket->pendingDatagramSize());
+        QDataStream in(&datagram, QIODevice::ReadOnly);
+        udpSocket->readDatagram(datagram.data(), datagram.size());
+        in >> peerInfo;
+        qDebug() << peerInfo.peerid ;
+        qDebug() << static_cast<int>(peerInfo.getPeerState()) ;
 //      //  statusLabel->setText(tr("Received datagram: \"%1\"")
 //      //                     .arg(datagram.data()));
     }
