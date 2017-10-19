@@ -45,7 +45,14 @@ void CoreApp::initApp(MainWindow &w)
     initTCPServer(w);
     initStateReceiver();
     broadCastSelfState(w);
-};
+}
+
+void CoreApp::addPeer(PeerInfo &peer)
+{
+    if(peerInfo->peerid != peer.peerid){
+        peers.insert(peer.peerid, peer);
+    }
+}
 
 PeerInfo & CoreApp::getPeerInfo()
 {
@@ -72,7 +79,7 @@ void CoreApp::initSelfState()
 {
     peerInfo = new PeerInfo();
     peerInfo->generatePeerId();
-    peerInfo->setPeerState(PeerState::MUTATED);
+    peerInfo->setPeerState(PeerState::INITIALIZED);
 }
 
 void CoreApp::initStateReceiver()

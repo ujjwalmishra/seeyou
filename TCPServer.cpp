@@ -9,27 +9,18 @@
 SeeyouServer::SeeyouServer(QObject *parent)
     : QTcpServer(parent)
 {
-    fortunes << tr("You've been leading a dog's life. Stay off the furniture.")
-             << tr("You've got to think about tomorrow.")
-             << tr("You will be surprised by a loud noise.")
-             << tr("You will feel hungry again in another hour.")
-             << tr("You might have mail.")
-             << tr("You cannot kill time without injuring eternity.")
-             << tr("Computers are not intelligent. They only think they are.");
+
 }
 //! [0]
 
 //! [1]
 void SeeyouServer::incomingConnection(qintptr socketDescriptor)
 {
-    QString fortune = fortunes.at(qrand() % fortunes.size());
-    SeeyouServerThread *thread = new SeeyouServerThread(socketDescriptor, fortune, this);
+    SeeyouServerThread *thread = new SeeyouServerThread(socketDescriptor, this);
     connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
     thread->start();
 }
-//! [1]
 
-//! [2]
 ServerConn SeeyouServer::connectToPort()
 {
     if (!this->listen(QHostAddress::Any, 11111)) {
@@ -59,6 +50,7 @@ ServerConn SeeyouServer::connectToPort()
         struct ServerConn conn;
         conn.flag = true;
         conn.message = "Server is up and running";
+        qDebug() << ipAddress;
         return conn;
 //    statusLabel->setText(tr("The server is running on\n\nIP: %1\nport: %2\n\n"
 //                            "Run the Fortune Client example now.")

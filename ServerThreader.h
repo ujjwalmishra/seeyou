@@ -9,7 +9,7 @@ class SeeyouServerThread : public QThread
     Q_OBJECT
 
 public:
-    SeeyouServerThread(int socketDescriptor, const QString &fortune, QObject *parent);
+    SeeyouServerThread(int socketDescriptor, QObject *parent);
 
     void run() override;
 

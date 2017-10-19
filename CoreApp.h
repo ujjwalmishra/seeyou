@@ -5,6 +5,7 @@
 #include "PeerData.h"
 #include "mainwindow.h"
 #include "UDPReceiver.h"
+#include <QMap>
 
 
 class CoreApp {
@@ -13,6 +14,7 @@ public:
     ~CoreApp();
     void broadCastSelfState(MainWindow &w);
     PeerInfo & getPeerInfo();
+    void addPeer(PeerInfo & peer);
     static CoreApp *getObject(MainWindow &w);
     static CoreApp *getObject();
 
@@ -28,6 +30,7 @@ private:
     PeerData *peerData;
     Receiver *rcvr;
     static CoreApp *myInstance;
+    QMap<QUuid, PeerInfo> peers;
     //Database
 };
 

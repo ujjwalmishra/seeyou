@@ -3,8 +3,8 @@
 #include <QtNetwork>
 
 //! [0]
-SeeyouServerThread::SeeyouServerThread(int socketDescriptor, const QString &fortune, QObject *parent)
-    : QThread(parent), socketDescriptor(socketDescriptor), text(fortune)
+SeeyouServerThread::SeeyouServerThread(int socketDescriptor, QObject *parent)
+    : QThread(parent), socketDescriptor(socketDescriptor)
 {
 }
 //! [0]
