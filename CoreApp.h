@@ -6,6 +6,7 @@
 #include "mainwindow.h"
 #include "UDPReceiver.h"
 #include <QMap>
+#include <QUuid>
 
 
 class CoreApp {
@@ -15,6 +16,7 @@ public:
     void broadCastSelfState(MainWindow &w);
     PeerInfo & getPeerInfo();
     void addPeer(PeerInfo & peer);
+    void addTCPServerID(QString string);
     static CoreApp *getObject(MainWindow &w);
     static CoreApp *getObject();
 
@@ -26,6 +28,9 @@ private:
     void initSelfState();
     void initStateReceiver();
     void initTCPClient();
+    QUuid getUidFromFile();
+    void writeUidToFile(QUuid uid);
+    QString appUIDFile;
     PeerInfo *peerInfo;
     PeerData *peerData;
     Receiver *rcvr;

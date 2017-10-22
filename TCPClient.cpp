@@ -136,6 +136,8 @@ void Client::requestNewFortune()
     getFortuneButton->setEnabled(false);
     tcpSocket->abort();
 //! [7]
+//!
+
     tcpSocket->connectToHost(hostCombo->currentText(),
                              portLineEdit->text().toInt());
 //! [7]

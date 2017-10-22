@@ -3,6 +3,8 @@
 #include <QDebug>
 #include "PeerInfo.h"
 #include "UDPReceiver.h"
+#include "CoreApp.h"
+
 
 Receiver::Receiver(QWidget *parent)
     : QWidget(parent)
@@ -16,7 +18,7 @@ Receiver::Receiver(QWidget *parent)
     connect(udpSocket, SIGNAL(readyRead()),
             this, SLOT(processPendingDatagrams()));
 //! [1]
-
+    app = CoreApp::getObject();
 }
 
 void Receiver::init()
@@ -36,8 +38,9 @@ void Receiver::processPendingDatagrams()
         QDataStream in(&datagram, QIODevice::ReadOnly);
         udpSocket->readDatagram(datagram.data(), datagram.size());
         in >> peerInfo;
-        qDebug() << peerInfo.peerid ;
-        qDebug() << static_cast<int>(peerInfo.getPeerState()) ;
+        app->addPeer(peerInfo);
+        qDebug() << peerInfo.tcpip ;
+        //qDebug() << static_cast<int>(peerInfo.getPeerState()) ;
 //      //  statusLabel->setText(tr("Received datagram: \"%1\"")
 //      //                     .arg(datagram.data()));
     }

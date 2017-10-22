@@ -5,6 +5,7 @@
 #include "TCPServer.h"
 #include "CoreApp.h"
 #include "UDPReceiver.h"
+#include <QFile>
 
 CoreApp * CoreApp::myInstance = nullptr;
 CoreApp::CoreApp()
@@ -41,6 +42,7 @@ CoreApp* CoreApp::getObject()
 
 void CoreApp::initApp(MainWindow &w)
 {
+    appUIDFile = "./app.txt";
     initSelfState();
     initTCPServer(w);
     initStateReceiver();
@@ -52,6 +54,11 @@ void CoreApp::addPeer(PeerInfo &peer)
     if(peerInfo->peerid != peer.peerid){
         peers.insert(peer.peerid, peer);
     }
+}
+
+void CoreApp::addTCPServerID(QString string)
+{
+    peerInfo->setPeerTCPIP(string);
 }
 
 PeerInfo & CoreApp::getPeerInfo()
@@ -72,14 +79,49 @@ void CoreApp::initTCPServer(MainWindow &w)
     if(conn.flag) {
         w.setCheckBox( conn.flag);
         w.setProgressBar(conn.flag);
+        addTCPServerID(conn.serverip);
     }
 }
 
 void CoreApp::initSelfState()
 {
+    QUuid uid = getUidFromFile();
+    qDebug() << uid;
     peerInfo = new PeerInfo();
-    peerInfo->generatePeerId();
+    if(!uid.isNull()) {
+        peerInfo->peerid = uid;
+    }
+    else {
+        peerInfo->generatePeerId();
+        writeUidToFile(peerInfo->peerid);
+    }
+
     peerInfo->setPeerState(PeerState::INITIALIZED);
+}
+
+QUuid CoreApp::getUidFromFile()
+{
+    QUuid uid;
+    QFile file(appUIDFile);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return uid;
+
+    QDataStream in(&file);
+    in >> uid;
+    file.close();
+    return uid;
+}
+
+void CoreApp::writeUidToFile(QUuid uid)
+{
+    QFile file(appUIDFile);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
+
+    QDataStream out(&file);
+    out << uid;
+    file.flush();
+    file.close();
 }
 
 void CoreApp::initStateReceiver()

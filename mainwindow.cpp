@@ -38,9 +38,9 @@ bool MainWindow::setProgressBar(bool flag)
 void MainWindow::addTask()
 {
     qDebug() << "Adding new task";
-    //Event* event = new Event("Untitled Event");
+    Event* event = new Event("Untitled Event");
     //events.append(event);
-    //ui->verticalLayout->addWidget(event);
+    ui->verticalLayout->addWidget(event);
 }
 
 void MainWindow::initBroadCastPeerState()

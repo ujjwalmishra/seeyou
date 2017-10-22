@@ -53,6 +53,8 @@
 
 #include <QWidget>
 
+class CoreApp;
+
 QT_BEGIN_NAMESPACE
 class QUdpSocket;
 class QAction;
@@ -70,7 +72,7 @@ private slots:
     void processPendingDatagrams();
 
 private:
-
+    CoreApp *app;
     QUdpSocket *udpSocket;
 };
 

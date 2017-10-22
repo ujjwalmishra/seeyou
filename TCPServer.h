@@ -9,6 +9,7 @@
 struct ServerConn{
     QString message;
     bool flag;
+    QString serverip;
 };
 
 //! [0]

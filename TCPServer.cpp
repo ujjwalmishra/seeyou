@@ -23,12 +23,9 @@ void SeeyouServer::incomingConnection(qintptr socketDescriptor)
 
 ServerConn SeeyouServer::connectToPort()
 {
+    struct ServerConn conn;
     if (!this->listen(QHostAddress::Any, 11111)) {
-//        QMessageBox::critical(this, tr("Threaded Fortune Server"),
-//                              tr("Unable to start the server: %1.")
-//                              .arg(server.errorString()));
         close();
-        struct ServerConn conn;
         conn.flag = false;
         conn.message = "Unable to start the server";
         return conn;
@@ -45,16 +42,14 @@ ServerConn SeeyouServer::connectToPort()
         }
     }
     // if we did not find one, use IPv4 localhost
-    if (ipAddress.isEmpty())
-        ipAddress = QHostAddress(QHostAddress::LocalHost).toString();
-        struct ServerConn conn;
+//    if (ipAddress.isEmpty())
+//        ipAddress = QHostAddress(QHostAddress::LocalHost).toString();
+
         conn.flag = true;
         conn.message = "Server is up and running";
+        conn.serverip = ipAddress;
         qDebug() << ipAddress;
         return conn;
-//    statusLabel->setText(tr("The server is running on\n\nIP: %1\nport: %2\n\n"
-//                            "Run the Fortune Client example now.")
-//                         .arg(ipAddress).arg(server.serverPort()));
 
 }
 //! [2]

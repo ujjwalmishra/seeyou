@@ -28,7 +28,7 @@ void UDPBroadcaster::broadcastDatagram()
 //    qDebug() << peer.peerid ;
     CoreApp *app = CoreApp::getObject();
     PeerInfo peerInfo = app->getPeerInfo();
-    qDebug() << peerInfo.peerid;
+    //qDebug() << peerInfo.peerid;
     QByteArray datagram;
     QDataStream out(&datagram, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_1);

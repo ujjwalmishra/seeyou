@@ -14,6 +14,7 @@ public:
     ~PeerInfo();
     void generatePeerId();
     void setPeerState(PeerState state);
+    void setPeerTCPIP(QString ip);
     PeerState getPeerState();
     friend QDataStream & operator<<(QDataStream &out, PeerInfo &s);
     friend QDataStream & operator>>(QDataStream &in, PeerInfo &s);
@@ -22,6 +23,7 @@ public:
 public:
     QUuid peerid;
     PeerState state;
+    QString tcpip;
 };
 
 #endif // PEERS_H
