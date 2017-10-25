@@ -2,10 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGridLayout>
+#include <QGroupBox>
 #include "UDPBroadcaster.h"
 #include "PeerInfo.h"
 #include "PeerData.h"
 #include <QVector>
+#include <QWidget>
 #include "Event.h"
 
 namespace Ui {
@@ -29,6 +32,17 @@ public slots:
     void addTask();
 
 private:
+    void addLayouts();
+    void createGroupBoxes();
+    QWidget *centerWidget;
+    QGridLayout *mainLayout;
+    QGridLayout *serverLayout;
+    QGridLayout *tasksLayout;
+    QGridLayout *peersLayout;
+
+    QGroupBox *serverGroupBox;
+    QGroupBox *tasksGroupBox;
+    QGroupBox *peersGroupBox;
     Ui::MainWindow *ui;
     UDPBroadcaster *discoverer;
 };
