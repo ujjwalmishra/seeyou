@@ -37,7 +37,8 @@ SOURCES += \
     PeerEvent.cpp \
     CoreApp.cpp \
     peerstate.cpp \
-    statussignal.cpp
+    statussignal.cpp \
+    logindialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -53,7 +54,8 @@ HEADERS += \
     Database.h \
     PeerEvent.h \
     PeerState.h \
-    statussignal.h
+    statussignal.h \
+    logindialog.h
 
 FORMS += \
         mainwindow.ui \

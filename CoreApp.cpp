@@ -8,7 +8,8 @@
 #include <QFile>
 
 CoreApp * CoreApp::myInstance = nullptr;
-CoreApp::CoreApp()
+CoreApp::CoreApp(QObject *parent)
+    : QObject(parent)
 {
 
 }
@@ -77,10 +78,21 @@ void CoreApp::initTCPServer(MainWindow &w)
     ServerConn conn = server.connectToPort();
 
     if(conn.flag) {
-        w.setCheckBox( conn.flag);
-        w.setProgressBar(conn.flag);
+        w.statusText = conn.message;
+        w.brush = QBrush(Qt::green);
         addTCPServerID(conn.serverip);
     }
+    else {
+        w.statusText = conn.message;
+        w.brush = QBrush(Qt::red);
+    }
+    w.addLayouts();
+}
+
+void CoreApp::checkLogin(QString &user, QString &pass)
+{
+    qDebug() << user;
+    qDebug() << pass;
 }
 
 void CoreApp::initSelfState()

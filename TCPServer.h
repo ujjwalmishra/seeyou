@@ -7,7 +7,7 @@
 #include <QTcpServer>
 
 struct ServerConn{
-    QString message;
+    const char* message;
     bool flag;
     QString serverip;
 };

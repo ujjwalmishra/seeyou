@@ -28,13 +28,15 @@ public:
     bool setCheckBox( bool flag);
     bool setProgressBar(bool flag);
     Ui::MainWindow getUIObject();
-    void initBroadCastPeerState();
+    void initBroadCastPeerState();    
+    const char *statusText;
+    QBrush brush;
+    void addLayouts();
 
 public slots:
     void addTask();
 
 private:
-    void addLayouts();
     void createGroupBoxes();
     void setServerGroup();
     void setTasksGroup();

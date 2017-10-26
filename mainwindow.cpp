@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     discoverer = new UDPBroadcaster();
     centerWidget = new QWidget();
     setCentralWidget(centerWidget);
-    addLayouts();
+   // addLayouts();
 //    connect(ui->addButton, &QPushButton::clicked,
 //       this, &MainWindow::addTask);
 }
@@ -49,9 +49,9 @@ void MainWindow::setServerGroup()
 {
     serverGroupBox = new QGroupBox(tr("Server Status"));
     serverLayout = new QGridLayout();
-    statusLabel = new QLabel(tr("Server up and running"));
+    statusLabel = new QLabel(tr(statusText));
     signal = new StatusSignal;
-    signal->setBrush(QBrush(Qt::green));
+    signal->setBrush(brush);
     statusLabel->setBuddy(signal);
     serverLayout->addWidget(statusLabel, 0, 0, 1, 1);
     serverLayout->addWidget(signal, 0, 1, 1, 3);

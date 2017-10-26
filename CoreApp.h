@@ -9,8 +9,9 @@
 #include <QUuid>
 
 
-class CoreApp {
-
+class CoreApp : public QObject
+{
+    Q_OBJECT
 public:
     ~CoreApp();
     void broadCastSelfState(MainWindow &w);
@@ -20,8 +21,11 @@ public:
     static CoreApp *getObject(MainWindow &w);
     static CoreApp *getObject();
 
+public slots:
+    void checkLogin(QString&, QString&);
+
 private:
-    CoreApp();
+    CoreApp(QObject *parent = 0);
     CoreApp(MainWindow &w);
     void initApp(MainWindow &w);
     void initTCPServer(MainWindow &w);
