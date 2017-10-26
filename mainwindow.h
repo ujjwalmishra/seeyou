@@ -9,7 +9,10 @@
 #include "PeerData.h"
 #include <QVector>
 #include <QWidget>
+#include <QBrush>
+#include <QLabel>
 #include "Event.h"
+#include "statussignal.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,13 +30,17 @@ public:
     Ui::MainWindow getUIObject();
     void initBroadCastPeerState();
 
-
 public slots:
     void addTask();
 
 private:
     void addLayouts();
     void createGroupBoxes();
+    void setServerGroup();
+    void setTasksGroup();
+    void setPeersGroup();
+    StatusSignal *signal;
+    QLabel *statusLabel;
     QWidget *centerWidget;
     QGridLayout *mainLayout;
     QGridLayout *serverLayout;

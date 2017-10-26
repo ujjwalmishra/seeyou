@@ -36,7 +36,8 @@ SOURCES += \
     UDPReceiver.cpp \
     PeerEvent.cpp \
     CoreApp.cpp \
-    peerstate.cpp
+    peerstate.cpp \
+    statussignal.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -51,8 +52,12 @@ HEADERS += \
     UDPReceiver.h \
     Database.h \
     PeerEvent.h \
-    PeerState.h
+    PeerState.h \
+    statussignal.h
 
 FORMS += \
         mainwindow.ui \
     event.ui
+
+RESOURCES += \
+    resources.qrc
