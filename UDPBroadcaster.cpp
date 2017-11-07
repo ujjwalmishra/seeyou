@@ -21,15 +21,9 @@ UDPBroadcaster::UDPBroadcaster()
 
 void UDPBroadcaster::broadcastDatagram()
 {
-    qDebug() << "Broadcasting";
-//! [1]
-//    Peer peer;
-//    peer.generatePeerId();
-//    qDebug() << peer.peerid ;
+
     CoreApp *app = CoreApp::getObject();
-    qDebug() << "sd";
     PeerInfo peerInfo = app->getPeerInfo();
-    qDebug() << peerInfo.peerid;
     QByteArray datagram;
     QDataStream out(&datagram, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_1);

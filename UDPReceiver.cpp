@@ -30,22 +30,17 @@ void Receiver::init()
 void Receiver::processPendingDatagrams()
 {
 //! [2]
-    qDebug() << "sdsd";
+
     while (udpSocket->hasPendingDatagrams()) {
-        qDebug() << "1";
         PeerInfo peerInfo;
         QByteArray datagram;
         datagram.resize(udpSocket->pendingDatagramSize());
         QDataStream in(&datagram, QIODevice::ReadOnly);
         udpSocket->readDatagram(datagram.data(), datagram.size());
         in >> peerInfo;
-        //app->addPeer(peerInfo);
-        qDebug() << "got id";
-        qDebug() << peerInfo.tcpip ;
+        qDebug() << "Below";
         qDebug() << peerInfo.peerid;
-        //qDebug() << static_cast<int>(peerInfo.getPeerState()) ;
-//      //  statusLabel->setText(tr("Received datagram: \"%1\"")
-//      //                     .arg(datagram.data()));
+        app->addPeer(peerInfo);
     }
 
 //! [2]

@@ -34,7 +34,7 @@ CoreApp* CoreApp::getObject(MainWindow &w)
         myInstance = new CoreApp(w);
         return myInstance;
     }
-};
+}
 
 CoreApp* CoreApp::getObject()
 {
@@ -52,7 +52,9 @@ void CoreApp::initApp(MainWindow &w)
 
 void CoreApp::addPeer(PeerInfo &peer)
 {
-    if(peerInfo->peerid != peer.peerid){
+
+    CoreApp *app = CoreApp::getObject();
+    if(app->getPeerInfo().peerid.toString().compare(peer.peerid.toString()) != 0){
         peers.insert(peer.peerid, peer);
     }
 }
