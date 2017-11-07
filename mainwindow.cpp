@@ -11,9 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    discoverer = new UDPBroadcaster();
     centerWidget = new QWidget();
     setCentralWidget(centerWidget);
+    discoverer = new UDPBroadcaster();
    // addLayouts();
 //    connect(ui->addButton, &QPushButton::clicked,
 //       this, &MainWindow::addTask);
@@ -49,13 +49,21 @@ void MainWindow::setServerGroup()
 {
     serverGroupBox = new QGroupBox(tr("Server Status"));
     serverLayout = new QGridLayout();
+    connectButton = new QPushButton(tr("Connect"));
     statusLabel = new QLabel(tr(statusText));
     signal = new StatusSignal;
     signal->setBrush(brush);
     statusLabel->setBuddy(signal);
     serverLayout->addWidget(statusLabel, 0, 0, 1, 1);
-    serverLayout->addWidget(signal, 0, 1, 1, 3);
+    serverLayout->addWidget(signal, 0, 1, 1, 4);
+    serverLayout->addWidget(connectButton, 0, 2, 1, 1 );
     serverGroupBox->setLayout(serverLayout);
+}
+
+void MainWindow::initBroadCaster()
+{
+        connect(connectButton, SIGNAL(clicked()),
+                discoverer, SLOT(broadcastDatagram()));
 }
 
 void MainWindow::setTasksGroup()
@@ -90,11 +98,6 @@ void MainWindow::addTask()
     Event* event = new Event("Untitled Event");
     //events.append(event);
 //    ui->verticalLayout->addWidget(event);
-}
-
-void MainWindow::initBroadCastPeerState()
-{
-//    connect(ui->connectPushButton, SIGNAL( clicked() ), discoverer, SLOT( broadcastDatagram() )  );
 }
 
 

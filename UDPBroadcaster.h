@@ -16,14 +16,13 @@ class UDPBroadcaster: public QObject
 Q_OBJECT
 public:
     UDPBroadcaster();
-    void initDiscoverer();
+   // void init();
 
 private slots:
 //    void startDiscovery(int port);
 //    void setDiscoveryInterval(int interval);
 //    void initAutoDiscoverer();
     void broadcastDatagram();
-
 
 private:
     QPushButton *startButton;

@@ -69,7 +69,7 @@ PeerInfo & CoreApp::getPeerInfo()
 
 void CoreApp::broadCastSelfState(MainWindow &w)
 {
-    w.initBroadCastPeerState();
+   w.initBroadCaster();
 }
 
 void CoreApp::initTCPServer(MainWindow &w)
@@ -89,11 +89,11 @@ void CoreApp::initTCPServer(MainWindow &w)
     w.addLayouts();
 }
 
-void CoreApp::checkLogin(QString &user, QString &pass)
-{
-    qDebug() << user;
-    qDebug() << pass;
-}
+//void CoreApp::checkLogin(QString &user, QString &pass)
+//{
+//    qDebug() << user;
+//    qDebug() << pass;
+//}
 
 void CoreApp::initSelfState()
 {
@@ -109,6 +109,7 @@ void CoreApp::initSelfState()
     }
 
     peerInfo->setPeerState(PeerState::INITIALIZED);
+    qDebug() << "Initialized";
 }
 
 QUuid CoreApp::getUidFromFile()

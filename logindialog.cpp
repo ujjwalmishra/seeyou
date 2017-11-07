@@ -64,19 +64,19 @@ setLayout( formGridLayout );
 }
 
 void LoginDialog::setUsername(QString username){
- bool found = false;
- for( int i = 0; i < comboUsername->count() && ! found ; i++ )
- if( comboUsername->itemText( i ) == username ){
- comboUsername->setCurrentIndex( i );
- found = true;
+     bool found = false;
+     for( int i = 0; i < comboUsername->count() && ! found ; i++ )
+     if( comboUsername->itemText( i ) == username ){
+     comboUsername->setCurrentIndex( i );
+     found = true;
  }
 
 if( ! found ){
- int index = comboUsername->count();
- qDebug() << "Select username " << index;
- comboUsername->addItem( username );
+    int index = comboUsername->count();
+    qDebug() << "Select username " << index;
+    comboUsername->addItem( username );
 
-comboUsername->setCurrentIndex( index );
+    comboUsername->setCurrentIndex( index );
  }
 
 // place the focus on the password field

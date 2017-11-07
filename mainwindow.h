@@ -9,6 +9,7 @@
 #include "PeerData.h"
 #include <QVector>
 #include <QWidget>
+#include <QPushButton>
 #include <QBrush>
 #include <QLabel>
 #include "Event.h"
@@ -28,7 +29,7 @@ public:
     bool setCheckBox( bool flag);
     bool setProgressBar(bool flag);
     Ui::MainWindow getUIObject();
-    void initBroadCastPeerState();    
+    void initBroadCaster();
     const char *statusText;
     QBrush brush;
     void addLayouts();
@@ -43,6 +44,7 @@ private:
     void setPeersGroup();
     StatusSignal *signal;
     QLabel *statusLabel;
+    QPushButton * connectButton;
     QWidget *centerWidget;
     QGridLayout *mainLayout;
     QGridLayout *serverLayout;

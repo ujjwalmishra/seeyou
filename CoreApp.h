@@ -5,6 +5,7 @@
 #include "PeerData.h"
 #include "mainwindow.h"
 #include "UDPReceiver.h"
+#include "UDPBroadcaster.h"
 #include <QMap>
 #include <QUuid>
 
@@ -22,7 +23,7 @@ public:
     static CoreApp *getObject();
 
 public slots:
-    void checkLogin(QString&, QString&);
+    //void checkLogin(QString&, QString&);
 
 private:
     CoreApp(QObject *parent = 0);
@@ -40,6 +41,7 @@ private:
     Receiver *rcvr;
     static CoreApp *myInstance;
     QMap<QUuid, PeerInfo> peers;
+    UDPBroadcaster * discoverer;
     //Database
 };
 

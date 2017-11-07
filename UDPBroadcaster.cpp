@@ -14,10 +14,10 @@ UDPBroadcaster::UDPBroadcaster()
     udpSocket = new QUdpSocket(this);
 }
 
-void UDPBroadcaster::initDiscoverer()
-{
-
-}
+//void UDPBroadcaster::init(){
+//    connect(udpSocket, SIGNAL(readyWrite()),
+//            this, SLOT(broadcastDatagram()));
+//}
 
 void UDPBroadcaster::broadcastDatagram()
 {
@@ -27,13 +27,13 @@ void UDPBroadcaster::broadcastDatagram()
 //    peer.generatePeerId();
 //    qDebug() << peer.peerid ;
     CoreApp *app = CoreApp::getObject();
+    qDebug() << "sd";
     PeerInfo peerInfo = app->getPeerInfo();
-    //qDebug() << peerInfo.peerid;
+    qDebug() << peerInfo.peerid;
     QByteArray datagram;
     QDataStream out(&datagram, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_1);
     out << peerInfo;
-
 
     udpSocket->writeDatagram(datagram.data(), datagram.size(),
                              QHostAddress::Broadcast, 45454);

@@ -6,13 +6,13 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    //CoreApp *app =
-    CoreApp::getObject(w);
     LoginDialog* loginDialog = new LoginDialog();
     loginDialog->setUsername( "Luca" ); // optional
     int result = loginDialog->exec();
     if(loginDialog->getGo()){
+
+        MainWindow w;
+        CoreApp::getObject(w);
         w.show();
         qDebug() << result;
         qDebug() << "got it here";
