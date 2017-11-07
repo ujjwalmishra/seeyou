@@ -11,14 +11,17 @@ int main(int argc, char *argv[])
     CoreApp::getObject(w);
     LoginDialog* loginDialog = new LoginDialog();
     loginDialog->setUsername( "Luca" ); // optional
-//    QObject::connect( loginDialog,
-//     SIGNAL (acceptLogin(QString&,QString&,int&)),
-//     app,
-//     SLOT (checkLogin(QString&,QString&)));
-    loginDialog->exec();
+    int result = loginDialog->exec();
+    if(loginDialog->getGo()){
+        w.show();
+        qDebug() << result;
+        qDebug() << "got it here";
+        return a.exec();
+    }
+    else{
 
+        a.quit();
+        return 0;
+    }
 
-//    w.show();
-
-    return a.exec();
 }

@@ -10,6 +10,7 @@
 #include <QGridLayout>
 #include <QStringList>
 #include <QDebug>
+#include "mainwindow.h"
 
 /*!
  '''Makes class LoginDialog a child to its parent, QDialog
@@ -81,6 +82,9 @@ public:
  void setUsernamesList( const QStringList& usernames );
 
  bool checkPassword(QString &, QString&);
+
+ bool getGo();
+
 signals:
 
 /*!
@@ -95,8 +99,11 @@ public slots:
  /*!
  * A lot to adjust the emitting of the signal.
  */
+ void quitApplication();
  void slotAcceptLogin();
 
+private:
+    bool logStatus = false;
 };
 
 #endif // LOGINDIALOG_H

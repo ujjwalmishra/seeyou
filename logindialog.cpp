@@ -1,4 +1,5 @@
 #include "logindialog.h"
+#include <QApplication>
 
 LoginDialog::LoginDialog(QWidget *parent) :
  QDialog(parent)
@@ -40,8 +41,11 @@ void LoginDialog::setUpGUI(){
  connect( buttons->button( QDialogButtonBox::Cancel ),
  SIGNAL (clicked()),
  this,
- SLOT (close())
+ SLOT (quitApplication())
  );
+
+ //quit app on closing the login dialog
+
 
 connect( buttons->button( QDialogButtonBox::Ok ),
  SIGNAL (clicked()),
@@ -79,8 +83,19 @@ comboUsername->setCurrentIndex( index );
  editPassword->setFocus();
 }
 
+
 void LoginDialog::setPassword(QString &password){
  editPassword->setText( password );
+}
+
+bool LoginDialog::getGo(){
+    return logStatus;
+}
+
+void LoginDialog::quitApplication(){
+    qDebug()<<"Blah";
+    logStatus = false;
+    close();
 }
 
 void LoginDialog::slotAcceptLogin(){
@@ -95,9 +110,11 @@ emit acceptLogin( username, // current username
 
  if(checkPassword(username, password)){
      // close this dialog
+     logStatus = true;
      close();
  }
  else {
+     logStatus = false;
      setWindowTitle("Try again!!");
      editPassword->clear();
  }
