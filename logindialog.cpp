@@ -92,6 +92,11 @@ bool LoginDialog::getGo(){
     return logStatus;
 }
 
+QString LoginDialog::getUsername()
+{
+    return username;
+}
+
 void LoginDialog::quitApplication(){
     qDebug()<<"Blah";
     logStatus = false;
@@ -99,7 +104,7 @@ void LoginDialog::quitApplication(){
 }
 
 void LoginDialog::slotAcceptLogin(){
- QString username = comboUsername->currentText();
+ username = comboUsername->currentText();
  QString password = editPassword->text();
  int index = comboUsername->currentIndex();
 

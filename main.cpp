@@ -10,12 +10,10 @@ int main(int argc, char *argv[])
     loginDialog->setUsername( "Luca" ); // optional
     int result = loginDialog->exec();
     if(loginDialog->getGo()){
-
+        qDebug() << loginDialog->getUsername();
         MainWindow w;
-        CoreApp::getObject(w);
+        CoreApp::getObject(w, loginDialog->getUsername());
         w.show();
-        qDebug() << result;
-        qDebug() << "got it here";
         return a.exec();
     }
     else{

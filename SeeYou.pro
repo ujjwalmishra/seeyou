@@ -55,7 +55,8 @@ HEADERS += \
     PeerEvent.h \
     PeerState.h \
     statussignal.h \
-    logindialog.h
+    logindialog.h \
+    peerbox.h
 
 FORMS += \
         mainwindow.ui \

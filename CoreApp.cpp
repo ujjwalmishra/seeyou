@@ -6,6 +6,7 @@
 #include "CoreApp.h"
 #include "UDPReceiver.h"
 #include <QFile>
+#include <QString>
 
 CoreApp * CoreApp::myInstance = nullptr;
 CoreApp::CoreApp(QObject *parent)
@@ -14,8 +15,9 @@ CoreApp::CoreApp(QObject *parent)
 
 }
 
-CoreApp::CoreApp(MainWindow &w)
+CoreApp::CoreApp(MainWindow &w, QString name)
 {
+    username = name;
     initApp(w);
 }
 
@@ -25,13 +27,14 @@ CoreApp::~CoreApp()
     delete peerData;
 }
 
-CoreApp* CoreApp::getObject(MainWindow &w)
+CoreApp* CoreApp::getObject(MainWindow &w, QString name)
 {
     if(myInstance) {
         return myInstance;
     }
     else {
-        myInstance = new CoreApp(w);
+        myInstance = new CoreApp(w, name);
+
         return myInstance;
     }
 }
@@ -50,13 +53,14 @@ void CoreApp::initApp(MainWindow &w)
     broadCastSelfState(w);
 }
 
-void CoreApp::addPeer(PeerInfo &peer)
+void CoreApp::addPeer(PeerInfo *peer)
 {
-
     CoreApp *app = CoreApp::getObject();
-    if(app->getPeerInfo().peerid.toString().compare(peer.peerid.toString()) != 0){
-        peers.insert(peer.peerid, peer);
+    if(app->getPeerInfo().peerid.toString().compare(peer->peerid.toString()) != 0){
+        peers.insert(peer->peerid.toString(), peer);
     }
+    qDebug()<< peer;
+    app->peers.insert(peer->peerid.toString(), peer);
 }
 
 void CoreApp::addTCPServerID(QString string)
@@ -91,17 +95,11 @@ void CoreApp::initTCPServer(MainWindow &w)
     w.addLayouts();
 }
 
-//void CoreApp::checkLogin(QString &user, QString &pass)
-//{
-//    qDebug() << user;
-//    qDebug() << pass;
-//}
-
 void CoreApp::initSelfState()
 {
     QUuid uid = getUidFromFile();
-    qDebug() << uid;
     peerInfo = new PeerInfo();
+    peerInfo->setPeerName(username);
     if(!uid.isNull()) {
         peerInfo->peerid = uid;
     }
@@ -111,7 +109,6 @@ void CoreApp::initSelfState()
     }
 
     peerInfo->setPeerState(PeerState::INITIALIZED);
-    qDebug() << "Initialized";
 }
 
 QUuid CoreApp::getUidFromFile()

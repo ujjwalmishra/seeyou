@@ -28,7 +28,6 @@ void UDPBroadcaster::broadcastDatagram()
     QDataStream out(&datagram, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_1);
     out << peerInfo;
-
     udpSocket->writeDatagram(datagram.data(), datagram.size(),
                              QHostAddress::Broadcast, 45454);
 //! [1]

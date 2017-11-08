@@ -76,6 +76,10 @@ void MainWindow::setPeersGroup()
 
 }
 
+void MainWindow::addPeerUI(PeerInfo *peer){
+
+}
+
 bool MainWindow::setCheckBox( bool flag)
 {
     Qt::CheckState state=flag?Qt::Checked:Qt::Unchecked;

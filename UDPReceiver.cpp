@@ -38,9 +38,7 @@ void Receiver::processPendingDatagrams()
         QDataStream in(&datagram, QIODevice::ReadOnly);
         udpSocket->readDatagram(datagram.data(), datagram.size());
         in >> peerInfo;
-        qDebug() << "Below";
-        qDebug() << peerInfo.peerid;
-        app->addPeer(peerInfo);
+        app->addPeer(&peerInfo);
     }
 
 //! [2]

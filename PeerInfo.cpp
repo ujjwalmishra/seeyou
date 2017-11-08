@@ -37,6 +37,11 @@ void PeerInfo::setPeerTCPIP(QString ip)
     tcpip = ip;
 }
 
+void PeerInfo::setPeerName(QString name)
+{
+    username = name;
+}
+
 PeerState PeerInfo::getPeerState()
 {
     return state;
@@ -44,7 +49,7 @@ PeerState PeerInfo::getPeerState()
 
 QDataStream& operator<<(QDataStream &out, PeerInfo &s)
 {
-    out << s.peerid << s.state << s.tcpip;
+    out << s.peerid << s.state << s.tcpip << s.username;
     return out;
 }
 
@@ -52,7 +57,7 @@ QDataStream& operator<<(QDataStream &out, PeerInfo &s)
 QDataStream& operator>>(QDataStream &in, PeerInfo &s)
 {
     s = PeerInfo();
-    in >> s.peerid >> s.state >> s.tcpip;
+    in >> s.peerid >> s.state >> s.tcpip >> s.username;
     return in;
 }
 

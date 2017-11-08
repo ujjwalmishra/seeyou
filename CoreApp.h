@@ -17,17 +17,18 @@ public:
     ~CoreApp();
     void broadCastSelfState(MainWindow &w);
     PeerInfo & getPeerInfo();
-    void addPeer(PeerInfo & peer);
+    void addPeer(PeerInfo *peer);
     void addTCPServerID(QString string);
-    static CoreApp *getObject(MainWindow &w);
+    static CoreApp *getObject(MainWindow &w, QString name);
     static CoreApp *getObject();
+    QMap<QString, PeerInfo*> peers;
 
 public slots:
     //void checkLogin(QString&, QString&);
 
 private:
     CoreApp(QObject *parent = 0);
-    CoreApp(MainWindow &w);
+    CoreApp(MainWindow &w, QString name);
     void initApp(MainWindow &w);
     void initTCPServer(MainWindow &w);
     void initSelfState();
@@ -36,11 +37,11 @@ private:
     QUuid getUidFromFile();
     void writeUidToFile(QUuid uid);
     QString appUIDFile;
+    QString username;
     PeerInfo *peerInfo;
     PeerData *peerData;
     Receiver *rcvr;
     static CoreApp *myInstance;
-    QMap<QUuid, PeerInfo> peers;
     UDPBroadcaster * discoverer;
     //Database
 };

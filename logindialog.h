@@ -67,7 +67,7 @@ public:
 ''' to display
  */
  void setUsername( QString username );
-
+ QString getUsername();
  /*!
  * Sets the current password to propose to the user for the login.
  * password the password to fill into the dialog form
@@ -103,6 +103,7 @@ public slots:
  void slotAcceptLogin();
 
 private:
+    QString username;
     bool logStatus = false;
 };
 

@@ -12,7 +12,7 @@
 class PeerData: public QObject
 {
 
-    //Q_OBJECT
+    Q_OBJECT
 
 public:
     PeerData(QObject *parent = 0);

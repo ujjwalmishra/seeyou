@@ -42,6 +42,7 @@ private:
     void setServerGroup();
     void setTasksGroup();
     void setPeersGroup();
+    void addPeerUI(PeerInfo *peer);
     StatusSignal *signal;
     QLabel *statusLabel;
     QPushButton * connectButton;
