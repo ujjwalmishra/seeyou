@@ -32,6 +32,7 @@ private:
     void initApp(MainWindow &w);
     void initTCPServer(MainWindow &w);
     void initSelfState();
+    MainWindow *win;
     void initStateReceiver();
     void initTCPClient();
     QUuid getUidFromFile();

@@ -38,7 +38,8 @@ SOURCES += \
     CoreApp.cpp \
     peerstate.cpp \
     statussignal.cpp \
-    logindialog.cpp
+    logindialog.cpp \
+    peerbox.cpp
 
 HEADERS += \
         mainwindow.h \

@@ -14,6 +14,7 @@
 #include <QLabel>
 #include "Event.h"
 #include "statussignal.h"
+#include "peerbox.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,7 +32,8 @@ public:
     Ui::MainWindow getUIObject();
     void initBroadCaster();
     const char *statusText;
-    QBrush brush;
+    QBrush brush;    
+    void addPeerUI(PeerInfo *peer);
     void addLayouts();
 
 public slots:
@@ -42,7 +44,6 @@ private:
     void setServerGroup();
     void setTasksGroup();
     void setPeersGroup();
-    void addPeerUI(PeerInfo *peer);
     StatusSignal *signal;
     QLabel *statusLabel;
     QPushButton * connectButton;
@@ -51,7 +52,7 @@ private:
     QGridLayout *serverLayout;
     QGridLayout *tasksLayout;
     QGridLayout *peersLayout;
-
+    qint16 totalPeers = 0;
     QGroupBox *serverGroupBox;
     QGroupBox *tasksGroupBox;
     QGroupBox *peersGroupBox;

@@ -5,6 +5,7 @@
 #include "Event.h"
 #include <QPainter>
 #include "statussignal.h"
+#include "peerbox.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -42,7 +43,7 @@ void MainWindow::createGroupBoxes()
 {
     setServerGroup();
     tasksGroupBox = new QGroupBox(tr("My Tasks"));
-    peersGroupBox = new QGroupBox(tr("Online Peers"));
+    setPeersGroup();
 }
 
 void MainWindow::setServerGroup()
@@ -72,12 +73,22 @@ void MainWindow::setTasksGroup()
 }
 
 void MainWindow::setPeersGroup()
-{
-
+{    
+    peersGroupBox = new QGroupBox(tr("Online Peers"));
+    peersLayout = new QGridLayout();
+    peersLayout->setSpacing(0);
+    peersLayout->setContentsMargins(0,0,0,0);
+    peersGroupBox->setLayout(peersLayout);
 }
 
 void MainWindow::addPeerUI(PeerInfo *peer){
-
+    PeerBox *peerBox;
+    peerBox = new PeerBox();
+    peerBox->init(peer->username);
+    qDebug() << "adding pper";
+    qDebug() << peerBox->size();
+    peersLayout->addWidget(peerBox, totalPeers , 0, Qt::AlignTop);
+    totalPeers++;
 }
 
 bool MainWindow::setCheckBox( bool flag)

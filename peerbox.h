@@ -1,6 +1,9 @@
 #ifndef PEERBOX_H
 #define PEERBOX_H
 #include <QWidget>
+#include <QString>
+#include <QPushButton>
+#include <QHBoxLayout>
 
 class PeerBox : public QWidget
 {
@@ -9,7 +12,20 @@ class PeerBox : public QWidget
 
     public:
         explicit PeerBox(QWidget *parent = 0);
-        void init();
+        void init(QString name);
+        void addButtons();
+        void showButtons();
+        void paintEvent(QPaintEvent *e) override;
+
+    public slots:
+        void removePeer();
+        void viewPeer();
+
+    private:
+        QPushButton *viewPeerButton;
+        QPushButton *removePeerButton;
+        QString peername;
+        QHBoxLayout *gridLayout;
 
 };
 

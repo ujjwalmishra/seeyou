@@ -18,6 +18,7 @@ CoreApp::CoreApp(QObject *parent)
 CoreApp::CoreApp(MainWindow &w, QString name)
 {
     username = name;
+    win = &w;
     initApp(w);
 }
 
@@ -61,6 +62,7 @@ void CoreApp::addPeer(PeerInfo *peer)
     }
     qDebug()<< peer;
     app->peers.insert(peer->peerid.toString(), peer);
+    app->win->addPeerUI(peer);
 }
 
 void CoreApp::addTCPServerID(QString string)
