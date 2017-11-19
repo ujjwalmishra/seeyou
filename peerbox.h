@@ -4,6 +4,8 @@
 #include <QString>
 #include <QPushButton>
 #include <QHBoxLayout>
+#include <QPainter>
+#include <QUuid>
 
 class PeerBox : public QWidget
 {
@@ -12,20 +14,25 @@ class PeerBox : public QWidget
 
     public:
         explicit PeerBox(QWidget *parent = 0);
-        void init(QString name);
+        void init(QString name, QUuid uid);
         void addButtons();
         void showButtons();
         void paintEvent(QPaintEvent *e) override;
+        void toggleNotif();
 
     public slots:
+        void updatePeer();
         void removePeer();
         void viewPeer();
 
     private:
+        QPushButton *notifPeerButton;
         QPushButton *viewPeerButton;
         QPushButton *removePeerButton;
         QString peername;
         QHBoxLayout *gridLayout;
+        bool updated = false;
+        QUuid pUid;
 
 };
 

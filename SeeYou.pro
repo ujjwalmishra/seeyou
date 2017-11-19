@@ -39,7 +39,9 @@ SOURCES += \
     peerstate.cpp \
     statussignal.cpp \
     logindialog.cpp \
-    peerbox.cpp
+    peerbox.cpp \
+    tasksenum.cpp \
+    task.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -57,7 +59,10 @@ HEADERS += \
     PeerState.h \
     statussignal.h \
     logindialog.h \
-    peerbox.h
+    peerbox.h \
+    task.h \
+    tasksenum.h \
+    taskinfo.h
 
 FORMS += \
         mainwindow.ui \

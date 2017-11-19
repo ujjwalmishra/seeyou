@@ -8,8 +8,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     LoginDialog* loginDialog = new LoginDialog();
     loginDialog->setUsername( "Luca" ); // optional
-    int result = loginDialog->exec();
-    if(loginDialog->getGo()){
+   // int result = loginDialog->exec();
+    if(true){
+   //if(loginDialog->getGo()){
         qDebug() << loginDialog->getUsername();
         MainWindow w;
         CoreApp::getObject(w, loginDialog->getUsername());

@@ -8,6 +8,7 @@
 #include "UDPBroadcaster.h"
 #include <QMap>
 #include <QUuid>
+#include "task.h"
 
 
 class CoreApp : public QObject
@@ -19,6 +20,9 @@ public:
     PeerInfo & getPeerInfo();
     void addPeer(PeerInfo *peer);
     void addTCPServerID(QString string);
+//    Task * getLatestTask();
+//    void setLatestTask(Task task);
+//    void updateEvent(Task *task);
     static CoreApp *getObject(MainWindow &w, QString name);
     static CoreApp *getObject();
     QMap<QString, PeerInfo*> peers;
@@ -42,6 +46,7 @@ private:
     PeerInfo *peerInfo;
     PeerData *peerData;
     Receiver *rcvr;
+//    Task *latestTask;
     static CoreApp *myInstance;
     UDPBroadcaster * discoverer;
     //Database

@@ -16,9 +16,10 @@ class UDPBroadcaster: public QObject
 Q_OBJECT
 public:
     UDPBroadcaster();
+    void setMessageType(QString type);
    // void init();
 
-private slots:
+public slots:
 //    void startDiscovery(int port);
 //    void setDiscoveryInterval(int interval);
 //    void initAutoDiscoverer();
@@ -27,6 +28,7 @@ private slots:
 private:
     QPushButton *startButton;
     QUdpSocket *udpSocket;
+    QString mType;
 };
 
 #endif // STATEDISCOVERER_H

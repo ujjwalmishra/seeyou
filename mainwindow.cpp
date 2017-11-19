@@ -63,8 +63,8 @@ void MainWindow::setServerGroup()
 
 void MainWindow::initBroadCaster()
 {
-        connect(connectButton, SIGNAL(clicked()),
-                discoverer, SLOT(broadcastDatagram()));
+     discoverer->setMessageType("p");
+     connect(connectButton, SIGNAL(clicked()), discoverer, SLOT(broadcastDatagram()));
 }
 
 void MainWindow::setTasksGroup()
@@ -77,16 +77,14 @@ void MainWindow::setPeersGroup()
     peersGroupBox = new QGroupBox(tr("Online Peers"));
     peersLayout = new QGridLayout();
     peersLayout->setSpacing(0);
-    peersLayout->setContentsMargins(0,0,0,0);
     peersGroupBox->setLayout(peersLayout);
 }
 
 void MainWindow::addPeerUI(PeerInfo *peer){
     PeerBox *peerBox;
     peerBox = new PeerBox();
-    peerBox->init(peer->username);
+    peerBox->init(peer->username, peer->peerid);
     qDebug() << "adding pper";
-    qDebug() << peerBox->size();
     peersLayout->addWidget(peerBox, totalPeers , 0, Qt::AlignTop);
     totalPeers++;
 }

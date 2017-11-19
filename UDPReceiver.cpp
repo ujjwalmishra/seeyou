@@ -4,7 +4,7 @@
 #include "PeerInfo.h"
 #include "UDPReceiver.h"
 #include "CoreApp.h"
-
+#include "task.h"
 
 Receiver::Receiver(QWidget *parent)
     : QWidget(parent)
@@ -32,13 +32,24 @@ void Receiver::processPendingDatagrams()
 //! [2]
 
     while (udpSocket->hasPendingDatagrams()) {
-        PeerInfo peerInfo;
+        PeerInfo peerInfo;        
+        Task *task;
+        QString str;
         QByteArray datagram;
         datagram.resize(udpSocket->pendingDatagramSize());
         QDataStream in(&datagram, QIODevice::ReadOnly);
         udpSocket->readDatagram(datagram.data(), datagram.size());
-        in >> peerInfo;
-        app->addPeer(&peerInfo);
+        in >> str ;
+        if (str.compare("p") == 0) {
+            in >> peerInfo;
+            app->addPeer(&peerInfo);
+        }
+        if (str.compare("e") == 0) {
+            in >> *task;
+            //app->updateEvent(task);
+        }
+        //in >> peerInfo;
+        qDebug() << str;
     }
 
 //! [2]

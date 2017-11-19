@@ -75,6 +75,21 @@ PeerInfo & CoreApp::getPeerInfo()
     return *peerInfo;
 }
 
+//Task * CoreApp::getLatestTask()
+//{
+//    return latestTask;
+//}
+
+//void CoreApp::setLatestTask(Task task)
+//{
+//    latestTask = &task;
+//}
+
+//void CoreApp::updateEvent(Task *task)
+//{
+
+//}
+
 void CoreApp::broadCastSelfState(MainWindow &w)
 {
    w.initBroadCaster();
