@@ -79,6 +79,7 @@ void MainWindow::setTasksGroup(QUuid uid)
 {
     tasksLayout = new QGridLayout();
     tasksLayout->setMargin(0);
+    tasksLayout->setAlignment(Qt::AlignTop);
 //    for( unsigned int a, b = 0; a < sizeof(all_tasks)/sizeof(all_tasks[0]); a = a + 3, b++ ) {
     int row = 0, col=0;
         for(TaskEnum task : all_tasks) {
@@ -86,7 +87,7 @@ void MainWindow::setTasksGroup(QUuid uid)
             newTask  = new Task();
 
             newTask->setStyleSheet("QPushButton { border-color: rgb(66, 69, 183);  border-width: 3px;border-style: solid;border-radius: 4px;"
-                                     "padding: 2px 2px; width:10px; margin:0px; float:left }");
+                                     "padding: 2px 2px; margin:10px 0; float:left }");
             newTask->setTaskType(task);
             newTask->setUid(uid);
             newTask->setContentsMargins(2, 2, 2, 2);
