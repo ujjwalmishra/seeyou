@@ -4,7 +4,7 @@
 // Constructors
 TaskEnum::TaskEnum(void) :
    m_enum(wakeup),
-   m_string("Woke Up"),
+   m_string("WAKEUP"),
    m_value(0)
 {}
 
@@ -153,12 +153,12 @@ int TaskEnum::toValue(TaskEnum::Enum _e)
    switch (_e)
    {
       case wakeup:    { return 0; }
-      case eating:    { return 2; }
-      case bathing:   { return 3; }
-      case sleeping: { return 4; }
-      case playing:  { return 5; }
-      case radio:    { return 6; }
-      case tv:  { return 7; }
+      case eating:    { return 1; }
+      case bathing:   { return 2; }
+      case sleeping: { return 3; }
+      case playing:  { return 4; }
+      case radio:    { return 5; }
+      case tv:  { return 6; }
    }
-   return 8;  // Invalid
+   return 7;  // Invalid
 }

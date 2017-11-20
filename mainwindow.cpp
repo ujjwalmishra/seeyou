@@ -86,7 +86,7 @@ void MainWindow::setTasksGroup(QUuid uid)
             newTask  = new Task();
 
             newTask->setStyleSheet("QPushButton { border-color: rgb(66, 69, 183);  border-width: 3px;border-style: solid;border-radius: 4px;"
-                                     "padding: 2px 20px; width:10px; margin:0px; float:left }");
+                                     "padding: 2px 2px; width:10px; margin:0px; float:left }");
             newTask->setTaskType(task);
             newTask->setUid(uid);
             newTask->setContentsMargins(2, 2, 2, 2);
