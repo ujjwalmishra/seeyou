@@ -6,6 +6,8 @@
 #include <QPainter>
 #include "statussignal.h"
 #include "peerbox.h"
+#include "tasksenum.h"
+#include "task.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -43,6 +45,7 @@ void MainWindow::createGroupBoxes()
 {
     setServerGroup();
     tasksGroupBox = new QGroupBox(tr("My Tasks"));
+
     setPeersGroup();
 }
 
@@ -67,9 +70,36 @@ void MainWindow::initBroadCaster()
      connect(connectButton, SIGNAL(clicked()), discoverer, SLOT(broadcastDatagram()));
 }
 
-void MainWindow::setTasksGroup()
+void MainWindow::populateTasks(QUuid uid)
 {
+    setTasksGroup(uid);
+}
 
+void MainWindow::setTasksGroup(QUuid uid)
+{
+    tasksLayout = new QGridLayout();
+    tasksLayout->setMargin(0);
+//    for( unsigned int a, b = 0; a < sizeof(all_tasks)/sizeof(all_tasks[0]); a = a + 3, b++ ) {
+    int row = 0, col=0;
+        for(TaskEnum task : all_tasks) {
+            Task *newTask;
+            newTask  = new Task();
+
+            newTask->setStyleSheet("QPushButton { border-color: rgb(66, 69, 183);  border-width: 3px;border-style: solid;border-radius: 4px;"
+                                     "padding: 2px 20px; width:10px; margin:0px; float:left }");
+            newTask->setTaskType(task);
+            newTask->setUid(uid);
+            newTask->setContentsMargins(2, 2, 2, 2);
+            tasksLayout->addWidget(newTask, row, col, 1, 1 );
+
+            col++;
+            if(col == 3){
+                col = 0;
+                row++;
+            }
+        }
+
+    tasksGroupBox->setLayout(tasksLayout);
 }
 
 void MainWindow::setPeersGroup()
@@ -103,14 +133,6 @@ bool MainWindow::setProgressBar(bool flag)
 //    ui->statusProgressBar->setValue(value);
 
     return true;
-}
-
-void MainWindow::addTask()
-{
-    qDebug() << "Adding new task";
-    Event* event = new Event("Untitled Event");
-    //events.append(event);
-//    ui->verticalLayout->addWidget(event);
 }
 
 

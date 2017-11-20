@@ -29,7 +29,7 @@ void UDPBroadcaster::broadcastDatagram()
 
     CoreApp *app = CoreApp::getObject();
     PeerInfo peerInfo = app->getPeerInfo();
-    //Task *task = app->getLatestTask();
+    TaskInfo task = app->getLatestTask();
     QByteArray datagram;
     QDataStream out(&datagram, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_1);
@@ -39,7 +39,7 @@ void UDPBroadcaster::broadcastDatagram()
     }
     if(mType.compare("e")) {
         out << QString("e");
-        //out << *task;
+        out << task;
     }
 
     udpSocket->writeDatagram(datagram.data(), datagram.size(),

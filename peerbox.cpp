@@ -12,7 +12,7 @@ void PeerBox::init(QString name, QUuid uid){
     peername = name;
     pUid = uid;
     addButtons();
-    connect(viewPeerButton, SIGNAL(clicked()), this, SLOT(updatePeer()));
+    connect(notifPeerButton, SIGNAL(clicked()), this, SLOT(updatePeer()));
     connect(viewPeerButton, SIGNAL(clicked()), this, SLOT(viewPeer()));
     connect(removePeerButton, SIGNAL(clicked()), this, SLOT(removePeer()));
 }

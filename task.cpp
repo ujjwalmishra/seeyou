@@ -21,34 +21,29 @@ void Task::setUid(QUuid uid)
     uid = uid;
 }
 
-TaskEnum Task::getTaskType()
+TaskEnum* Task::getTaskType()
 {
-
+    return new TaskEnum(taskName);
 }
 
 void Task::init()
 {
+    layout = new QHBoxLayout();
+    layout->setMargin(0);
+    layout->setAlignment(Qt::AlignTop);
     addButton = new QPushButton(tr("taskName"));
+    addButton->setFixedWidth(140);
+    layout->addWidget(addButton);
     connect(addButton, SIGNAL(clicked()), this, SLOT(addTask()));
+    this->setLayout(layout);
 }
 
 void Task::addTask()
 {
+    task = new TaskInfo(app->getPeerInfo().peerid);
     broadcaster = new UDPBroadcaster();
-    //app->setLatestTask(*this);
+    app->setLatestTask(task);
     broadcaster->broadcastDatagram();
 }
 
-QDataStream& operator<<(QDataStream &out, Task &s)
-{
-    out << s.uid << s.taskName;
-    return out;
-}
 
-// istream, >> overloading
-QDataStream& operator>>(QDataStream &in, Task &s)
-{
-    s = new Task();
-    in >> s.uid >> s.taskName;
-    return in;
-}

@@ -6,6 +6,7 @@
 #include "CoreApp.h"
 #include "UDPBroadcaster.h"
 #include "tasksenum.h"
+#include "taskinfo.h"
 
 class Task : public QWidget
 {
@@ -16,7 +17,7 @@ class Task : public QWidget
         explicit Task(QWidget *parent = 0);
         void setTaskType(TaskEnum task);
         void setUid(QUuid uid);
-        TaskEnum getTaskType();
+        TaskEnum* getTaskType();
 
     public slots:
         void addTask();
@@ -27,8 +28,10 @@ class Task : public QWidget
 
     private:
         QPushButton *addButton;
+        QHBoxLayout *layout;
         void init();
         CoreApp *app;
+        TaskInfo *task;
         UDPBroadcaster *broadcaster;
 
 };

@@ -33,7 +33,7 @@ void Receiver::processPendingDatagrams()
 
     while (udpSocket->hasPendingDatagrams()) {
         PeerInfo peerInfo;        
-        Task *task;
+        TaskInfo task;
         QString str;
         QByteArray datagram;
         datagram.resize(udpSocket->pendingDatagramSize());
@@ -45,8 +45,8 @@ void Receiver::processPendingDatagrams()
             app->addPeer(&peerInfo);
         }
         if (str.compare("e") == 0) {
-            in >> *task;
-            //app->updateEvent(task);
+            in >> task;
+            app->updateEvent(&task);
         }
         //in >> peerInfo;
         qDebug() << str;

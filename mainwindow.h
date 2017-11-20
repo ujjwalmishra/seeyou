@@ -35,14 +35,12 @@ public:
     QBrush brush;    
     void addPeerUI(PeerInfo *peer);
     void addLayouts();
-
-public slots:
-    void addTask();
+    void populateTasks(QUuid uid);
 
 private:
     void createGroupBoxes();
     void setServerGroup();
-    void setTasksGroup();
+    void setTasksGroup(QUuid uid);
     void setPeersGroup();
     StatusSignal *signal;
     QLabel *statusLabel;

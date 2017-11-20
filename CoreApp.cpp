@@ -52,6 +52,7 @@ void CoreApp::initApp(MainWindow &w)
     initTCPServer(w);
     initStateReceiver();
     broadCastSelfState(w);
+    initTasks(w);
 }
 
 void CoreApp::addPeer(PeerInfo *peer)
@@ -75,20 +76,26 @@ PeerInfo & CoreApp::getPeerInfo()
     return *peerInfo;
 }
 
-//Task * CoreApp::getLatestTask()
-//{
-//    return latestTask;
-//}
+void CoreApp::initTasks(MainWindow &w)
+{
+    qDebug() << peerInfo->peerid;
+    w.populateTasks(peerInfo->peerid);
+}
 
-//void CoreApp::setLatestTask(Task task)
-//{
-//    latestTask = &task;
-//}
+TaskInfo CoreApp::getLatestTask()
+{
+    return *latestTask;
+}
 
-//void CoreApp::updateEvent(Task *task)
-//{
+void CoreApp::setLatestTask(TaskInfo *task)
+{
+    latestTask = task;
+}
 
-//}
+void CoreApp::updateEvent(TaskInfo *task)
+{
+
+}
 
 void CoreApp::broadCastSelfState(MainWindow &w)
 {

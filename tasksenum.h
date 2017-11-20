@@ -1,6 +1,7 @@
 #ifndef TASKSENUM_H
 #define TASKSENUM_H
 #include <string>
+#include <array>
 #include <QDataStream>
 #include <algorithm>
 #include <QString>
@@ -84,6 +85,13 @@ int TaskEnum::getValue(void) const
    return m_value;
 }
 
-
+const std::array<TaskEnum,8> all_tasks = {TaskEnum::wakeup,
+                                          TaskEnum::eating,
+                                          TaskEnum::bathing,
+                                          TaskEnum::sleeping,
+                                          TaskEnum::playing,
+                                          TaskEnum::radio,
+                                          TaskEnum::tv
+                                         };
 
 #endif // TASKSENUM_H

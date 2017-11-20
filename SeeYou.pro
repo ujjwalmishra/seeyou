@@ -41,7 +41,8 @@ SOURCES += \
     logindialog.cpp \
     peerbox.cpp \
     tasksenum.cpp \
-    task.cpp
+    task.cpp \
+    taskinfo.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -62,6 +63,7 @@ HEADERS += \
     peerbox.h \
     task.h \
     tasksenum.h \
+    taskinfo.h \
     taskinfo.h
 
 FORMS += \
