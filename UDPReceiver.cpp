@@ -42,14 +42,14 @@ void Receiver::processPendingDatagrams()
         in >> str ;
         if (str.compare("p") == 0) {
             in >> peerInfo;
+            qDebug() << peerInfo.peerid;
             app->addPeer(&peerInfo);
         }
         if (str.compare("e") == 0) {
             in >> task;
+            qDebug() << task.peerid;
             app->updateEvent(&task);
         }
-        //in >> peerInfo;
-        qDebug() << str;
     }
 
 //! [2]

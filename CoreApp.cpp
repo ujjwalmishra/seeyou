@@ -60,10 +60,10 @@ void CoreApp::addPeer(PeerInfo *peer)
     CoreApp *app = CoreApp::getObject();
     if(app->getPeerInfo().peerid.toString().compare(peer->peerid.toString()) != 0){
         peers.insert(peer->peerid.toString(), peer);
-    }
-    qDebug()<< peer;
+    };
     app->peers.insert(peer->peerid.toString(), peer);
-    app->win->addPeerUI(peer);
+    PeerBox *box = app->win->addPeerUI(peer);
+    app->peersUI.insert(peer->peerid.toString(), box);
 }
 
 void CoreApp::addTCPServerID(QString string)
@@ -78,13 +78,12 @@ PeerInfo & CoreApp::getPeerInfo()
 
 void CoreApp::initTasks(MainWindow &w)
 {
-    qDebug() << peerInfo->peerid;
     w.populateTasks(peerInfo->peerid);
 }
 
-TaskInfo CoreApp::getLatestTask()
+TaskInfo* CoreApp::getLatestTask()
 {
-    return *latestTask;
+     return latestTask;
 }
 
 void CoreApp::setLatestTask(TaskInfo *task)
@@ -94,7 +93,14 @@ void CoreApp::setLatestTask(TaskInfo *task)
 
 void CoreApp::updateEvent(TaskInfo *task)
 {
-
+    CoreApp *app = CoreApp::getObject();
+    qDebug() << "got here";
+    qDebug() << app->peersUI.value(task->peerid.toString());
+    PeerBox *box = app->peersUI.value(task->peerid.toString());
+    qDebug() << "0.12";
+    qDebug() << task->peerid.toString();
+    box->toggleNotif();
+    qDebug() << "updating event";
 }
 
 void CoreApp::broadCastSelfState(MainWindow &w)

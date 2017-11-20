@@ -2,6 +2,7 @@
 #include "CoreApp.h"
 #include "UDPBroadcaster.h"
 #include <QUuid>
+#include <QDebug>
 
 Task::Task(QWidget *parent)
     : QWidget(parent)
@@ -12,7 +13,6 @@ Task::Task(QWidget *parent)
 void Task::setTaskType(TaskEnum task)
 {
     taskName = task.getString();
-    app = CoreApp::getObject();
     init();
 }
 
@@ -40,8 +40,14 @@ void Task::init()
 
 void Task::addTask()
 {
+    CoreApp *app = CoreApp::getObject();
+    qDebug() << "0.5";
     task = new TaskInfo(app->getPeerInfo().peerid);
+    task->setTaskName(taskName);
+    app->setLatestTask(task);
     broadcaster = new UDPBroadcaster();
+    broadcaster->setMessageType("e");
+    qDebug() << "1";
     app->setLatestTask(task);
     broadcaster->broadcastDatagram();
 }

@@ -23,6 +23,7 @@ void PeerBox::addButtons(){
     notifPeerButton = new QPushButton(tr("Update"));
     notifPeerButton->setStyleSheet("QPushButton { border-color: rgb(66, 69, 183);  border-width: 3px;border-style: solid;border-radius: 4px;"
                                   "padding: 2px 20px; width:55%; margin:10px }");
+    notifPeerButton->setProperty("holla", false);
     viewPeerButton = new QPushButton(tr("View"));
     viewPeerButton->setStyleSheet("QPushButton { border-color: rgb(66, 69, 183);  border-width: 3px;border-style: solid;border-radius: 4px;"
                                   "padding: 2px 20px; width:55%; margin:10px }");
@@ -59,19 +60,20 @@ void PeerBox::paintEvent(QPaintEvent *e){
 }
 
 void PeerBox::toggleNotif(){
+    qDebug() << "notified";
     notifPeerButton->setStyleSheet("QPushButton { border-color: red;  border-width: 3px;border-style: solid;border-radius: 4px;"
                                    "padding: 2px 20px; width:55%; margin:10px; background-color: white }");
-    updated = !updated;
+    qDebug() << "1.2";
 }
 
 void PeerBox::updatePeer(){
 
 }
 
+
 void PeerBox::removePeer(){
     qDebug() << "removing";
     toggleNotif();
-    update();
 }
 
 void PeerBox::viewPeer(){

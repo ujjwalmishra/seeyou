@@ -20,13 +20,14 @@ public:
     PeerInfo & getPeerInfo();
     void addPeer(PeerInfo *peer);
     void addTCPServerID(QString string);
-    TaskInfo  getLatestTask();
+    TaskInfo * getLatestTask();
     void setLatestTask(TaskInfo* task);
     void updateEvent(TaskInfo *task);
     void initTasks(MainWindow &w);
     static CoreApp *getObject(MainWindow &w, QString name);
     static CoreApp *getObject();
     QMap<QString, PeerInfo*> peers;
+    QMap<QString, PeerBox*> peersUI;
 
 public slots:
     //void checkLogin(QString&, QString&);

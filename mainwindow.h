@@ -33,7 +33,7 @@ public:
     void initBroadCaster();
     const char *statusText;
     QBrush brush;    
-    void addPeerUI(PeerInfo *peer);
+    PeerBox* addPeerUI(PeerInfo *peer);
     void addLayouts();
     void populateTasks(QUuid uid);
 
