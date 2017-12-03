@@ -123,6 +123,12 @@ PeerBox* MainWindow::addPeerUI(PeerInfo *peer){
     return peerBox;
 }
 
+void MainWindow::removePeerUI(PeerBox *box)
+{
+    peersLayout->removeWidget(box);
+    update();
+}
+
 bool MainWindow::setCheckBox( bool flag)
 {
     Qt::CheckState state=flag?Qt::Checked:Qt::Unchecked;

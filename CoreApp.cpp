@@ -61,9 +61,19 @@ void CoreApp::addPeer(PeerInfo *peer)
     if(app->getPeerInfo().peerid.toString().compare(peer->peerid.toString()) != 0){
         peers.insert(peer->peerid.toString(), peer);
     };
-    app->peers.insert(peer->peerid.toString(), peer);
+    //app->peers.insert(peer->peerid.toString(), peer);
     PeerBox *box = app->win->addPeerUI(peer);
     app->peersUI.insert(peer->peerid.toString(), box);
+}
+
+void CoreApp::removePeer(QString uid)
+{
+    CoreApp *app = CoreApp::getObject();
+    PeerBox *box = app->peersUI.value(uid);
+    //qDebug << box;
+    app->win->removePeerUI(box);
+    app->peersUI.remove(uid);
+    qDebug() << "removed";
 }
 
 void CoreApp::addTCPServerID(QString string)

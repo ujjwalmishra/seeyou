@@ -20,6 +20,7 @@ public:
     void broadCastSelfState(MainWindow &w);
     PeerInfo & getPeerInfo();
     void addPeer(PeerInfo *peer);
+    void removePeer(QString uid);
     void addTCPServerID(QString string);
     TaskInfo * getLatestTask();
     void setLatestTask(TaskInfo* task);

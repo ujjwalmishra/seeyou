@@ -49,7 +49,6 @@ void Task::addTask()
     app->setLatestTask(task);
     TaskDescription *taskDesc = new TaskDescription();
     taskDesc->exec();
-    qDebug() << taskDesc->getDescription();
     if(taskDesc->getDescription().size() > 3) {
         task->setDescription(taskDesc->getDescription());
         task->setTaskTime(QTime::currentTime());

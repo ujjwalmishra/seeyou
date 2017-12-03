@@ -34,6 +34,7 @@ public:
     const char *statusText;
     QBrush brush;    
     PeerBox* addPeerUI(PeerInfo *peer);
+    void removePeerUI(PeerBox *box);
     void addLayouts();
     void populateTasks(QUuid uid);
 

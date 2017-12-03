@@ -1,6 +1,7 @@
 #include "peerbox.h"
 #include <QPainter>
 #include <QDebug>
+#include "coreapp.h"
 
 PeerBox::PeerBox(QWidget *parent)
     : QWidget(parent)
@@ -73,9 +74,11 @@ void PeerBox::updatePeer(){
 }
 
 
-void PeerBox::removePeer(){
-    qDebug() << "removing";
-    toggleNotif();
+void PeerBox::removePeer()
+{
+    qDebug() << "removing peer";
+    CoreApp *app = CoreApp::getObject();
+    app->removePeer(pUid.toString());
 }
 
 void PeerBox::viewPeer(){
