@@ -9,6 +9,7 @@
 #include <QMap>
 #include <QUuid>
 #include "taskinfo.h"
+#include <QVector>
 
 
 class CoreApp : public QObject
@@ -28,6 +29,7 @@ public:
     static CoreApp *getObject();
     QMap<QString, PeerInfo*> peers;
     QMap<QString, PeerBox*> peersUI;
+    QMap<QString, QVector<TaskInfo>> peerTasks;
 
 public slots:
     //void checkLogin(QString&, QString&);

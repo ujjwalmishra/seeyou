@@ -41,13 +41,22 @@ void Task::init()
 void Task::addTask()
 {
     CoreApp *app = CoreApp::getObject();
-    qDebug() << "0.5";
-    task = new TaskInfo(app->getPeerInfo().peerid);
+    QUuid uid = app->getPeerInfo().peerid;
+    task = new TaskInfo(uid);
     task->setTaskName(taskName);
     app->setLatestTask(task);
+    QVector<TaskInfo> selfTasks = app->peerTasks.value(uid.toString());
+    selfTasks.append(*task);
+    app->peerTasks.insert(uid.toString(), selfTasks);
+    QList<QString> ids = app->peerTasks.keys();
+//    for(auto key: ids) {
+//        qDebug() << key;
+//         QVector<TaskInfo> selfTasks = app->peerTasks.value(key);
+//        qDebug() << "size";
+//        qDebug() << selfTasks.last().taskName;
+//    }
     broadcaster = new UDPBroadcaster();
     broadcaster->setMessageType("e");
-    qDebug() << "1";
     app->setLatestTask(task);
     broadcaster->broadcastDatagram();
 }

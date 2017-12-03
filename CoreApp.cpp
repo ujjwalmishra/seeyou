@@ -79,6 +79,9 @@ PeerInfo & CoreApp::getPeerInfo()
 void CoreApp::initTasks(MainWindow &w)
 {
     w.populateTasks(peerInfo->peerid);
+    //add empty task array map
+    QVector<TaskInfo> vector;
+    peerTasks.insert(peerInfo->peerid.toString(), vector);
 }
 
 TaskInfo* CoreApp::getLatestTask()

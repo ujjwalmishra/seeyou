@@ -64,7 +64,8 @@ HEADERS += \
     task.h \
     tasksenum.h \
     taskinfo.h \
-    taskinfo.h
+    taskinfo.h \
+    taskdescription.h
 
 FORMS += \
         mainwindow.ui \

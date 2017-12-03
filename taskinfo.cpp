@@ -29,10 +29,19 @@ void TaskInfo::setPeerId(QUuid pid)
     peerid = pid;
 }
 
+void TaskInfo::setTaskTime(QTime time)
+{
+    creationTime = time;
+}
+
+void TaskInfo::setDescription(QString desc)
+{
+    description = desc;
+}
 
 QDataStream& operator<<(QDataStream &out, TaskInfo &s)
 {
-    out << s.peerid << s.taskName;
+    out << s.peerid << s.taskName << s.creationTime << s.description;
     return out;
 }
 
@@ -40,7 +49,7 @@ QDataStream& operator<<(QDataStream &out, TaskInfo &s)
 QDataStream& operator>>(QDataStream &in, TaskInfo &s)
 {
     s = TaskInfo();
-    in >> s.peerid >> s.taskName;
+    in >> s.peerid >> s.taskName >> s.creationTime >> s.description;
     return in;
 }
 

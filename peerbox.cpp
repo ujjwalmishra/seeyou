@@ -19,6 +19,8 @@ void PeerBox::init(QString name, QUuid uid){
 
 void PeerBox::addButtons(){
     gridLayout = new QHBoxLayout();
+    gridLayout->setMargin(5);
+//    gridLayout->setAlignment(Qt::AlignTop);
     gridLayout->setSizeConstraint(QLayout::SetFixedSize);
     notifPeerButton = new QPushButton(tr("Update"));
     notifPeerButton->setStyleSheet("QPushButton { border-color: rgb(66, 69, 183);  border-width: 3px;border-style: solid;border-radius: 4px;"
@@ -34,7 +36,7 @@ void PeerBox::addButtons(){
     gridLayout->addWidget(viewPeerButton);
     gridLayout->addWidget(removePeerButton);
     gridLayout->setSpacing(4);
-    gridLayout->setContentsMargins(0, 0, 0 ,0 );
+   // gridLayout->setContentsMargins(0, 0, 0 ,0 );
     this->setLayout(gridLayout);
 
 }

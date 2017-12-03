@@ -80,7 +80,7 @@ void MainWindow::setTasksGroup(QUuid uid)
     tasksLayout = new QGridLayout();
     tasksLayout->setMargin(0);
     tasksLayout->setAlignment(Qt::AlignTop);
-//    for( unsigned int a, b = 0; a < sizeof(all_tasks)/sizeof(all_tasks[0]); a = a + 3, b++ ) {
+
     int row = 0, col=0;
         for(TaskEnum task : all_tasks) {
             Task *newTask;
@@ -108,6 +108,8 @@ void MainWindow::setPeersGroup()
     peersGroupBox = new QGroupBox(tr("Online Peers"));
     peersLayout = new QGridLayout();
     peersLayout->setSpacing(0);
+    peersLayout->setMargin(0);
+    peersLayout->setAlignment(Qt::AlignTop);
     peersGroupBox->setLayout(peersLayout);
 }
 
