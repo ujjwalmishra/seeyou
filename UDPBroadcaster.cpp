@@ -26,7 +26,6 @@ void UDPBroadcaster::setMessageType(QString type)
 
 void UDPBroadcaster::broadcastDatagram()
 {
-    qDebug() << "broaind";
     CoreApp *app = CoreApp::getObject();
     PeerInfo peerInfo = app->getPeerInfo();
     TaskInfo *task = app->getLatestTask();
@@ -38,7 +37,6 @@ void UDPBroadcaster::broadcastDatagram()
         out << peerInfo;
     }
     if(mType.compare("e") == 0) {
-        qDebug() << task->peerid;
         out << QString("e");
         out << *task;
     }

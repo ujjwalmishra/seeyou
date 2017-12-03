@@ -74,7 +74,7 @@ void TaskDescription::quitDialog(){
 
 void TaskDescription::slotAcceptDescription(){
     description = editDescription->toPlainText();
-    qDebug() << description;
+
     close();
 }
 

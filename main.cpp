@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
    // int result = loginDialog->exec();
     if(true){
    //if(loginDialog->getGo()){
-        qDebug() << loginDialog->getUsername();
         MainWindow w;
         CoreApp::getObject(w, loginDialog->getUsername());
         w.show();

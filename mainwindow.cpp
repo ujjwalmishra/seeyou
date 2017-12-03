@@ -117,7 +117,6 @@ PeerBox* MainWindow::addPeerUI(PeerInfo *peer){
     PeerBox *peerBox;
     peerBox = new PeerBox();
     peerBox->init(peer->username, peer->peerid);
-    qDebug() << "adding pper";
     peersLayout->addWidget(peerBox, totalPeers , 0, Qt::AlignTop);
     totalPeers++;
     return peerBox;

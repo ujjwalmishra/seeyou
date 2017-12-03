@@ -73,7 +73,6 @@ void LoginDialog::setUsername(QString username){
 
 if( ! found ){
     int index = comboUsername->count();
-    qDebug() << "Select username " << index;
     comboUsername->addItem( username );
 
     comboUsername->setCurrentIndex( index );
@@ -98,7 +97,6 @@ QString LoginDialog::getUsername()
 }
 
 void LoginDialog::quitApplication(){
-    qDebug()<<"Blah";
     logStatus = false;
     close();
 }

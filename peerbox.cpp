@@ -63,10 +63,9 @@ void PeerBox::paintEvent(QPaintEvent *e){
 }
 
 void PeerBox::toggleNotif(){
-    qDebug() << "notified";
     notifPeerButton->setStyleSheet("QPushButton { border-color: red;  border-width: 3px;border-style: solid;border-radius: 4px;"
                                    "padding: 2px 20px; width:55%; margin:10px; background-color: white }");
-    qDebug() << "1.2";
+
 }
 
 void PeerBox::updatePeer(){
@@ -76,7 +75,7 @@ void PeerBox::updatePeer(){
 
 void PeerBox::removePeer()
 {
-    qDebug() << "removing peer";
+
     CoreApp *app = CoreApp::getObject();
     app->removePeer(pUid.toString());
 }

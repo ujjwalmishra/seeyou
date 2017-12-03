@@ -9,7 +9,6 @@
 #include <QComboBox>
 #include <QGridLayout>
 #include <QStringList>
-#include <QDebug>
 #include "mainwindow.h"
 
 /*!
