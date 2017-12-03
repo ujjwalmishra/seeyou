@@ -42,7 +42,8 @@ SOURCES += \
     peerbox.cpp \
     tasksenum.cpp \
     task.cpp \
-    taskinfo.cpp
+    taskinfo.cpp \
+    taskdescription.cpp
 
 HEADERS += \
         mainwindow.h \

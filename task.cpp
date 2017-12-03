@@ -1,8 +1,10 @@
 #include "task.h"
 #include "CoreApp.h"
 #include "UDPBroadcaster.h"
+#include "taskdescription.h"
 #include <QUuid>
 #include <QDebug>
+#include <QTime>
 
 Task::Task(QWidget *parent)
     : QWidget(parent)
@@ -45,20 +47,28 @@ void Task::addTask()
     task = new TaskInfo(uid);
     task->setTaskName(taskName);
     app->setLatestTask(task);
-    QVector<TaskInfo> selfTasks = app->peerTasks.value(uid.toString());
-    selfTasks.append(*task);
-    app->peerTasks.insert(uid.toString(), selfTasks);
-    QList<QString> ids = app->peerTasks.keys();
-//    for(auto key: ids) {
-//        qDebug() << key;
-//         QVector<TaskInfo> selfTasks = app->peerTasks.value(key);
-//        qDebug() << "size";
-//        qDebug() << selfTasks.last().taskName;
-//    }
-    broadcaster = new UDPBroadcaster();
-    broadcaster->setMessageType("e");
-    app->setLatestTask(task);
-    broadcaster->broadcastDatagram();
+    TaskDescription *taskDesc = new TaskDescription();
+    taskDesc->exec();
+    qDebug() << taskDesc->getDescription();
+    if(taskDesc->getDescription().size() > 3) {
+        task->setDescription(taskDesc->getDescription());
+        task->setTaskTime(QTime::currentTime());
+        QVector<TaskInfo> selfTasks = app->peerTasks.value(uid.toString());
+        selfTasks.append(*task);
+        app->peerTasks.insert(uid.toString(), selfTasks);
+    //    QList<QString> ids = app->peerTasks.keys();
+    //    for(auto key: ids) {
+    //        qDebug() << key;
+    //         QVector<TaskInfo> selfTasks = app->peerTasks.value(key);
+    //        qDebug() << "size";
+    //        qDebug() << selfTasks.last().taskName;
+    //    }
+        broadcaster = new UDPBroadcaster();
+        broadcaster->setMessageType("e");
+        app->setLatestTask(task);
+        broadcaster->broadcastDatagram();
+    }
+
 }
 
 
