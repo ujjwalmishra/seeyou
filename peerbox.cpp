@@ -1,7 +1,7 @@
 #include "peerbox.h"
 #include <QPainter>
 #include <QDebug>
-#include "coreapp.h"
+#include "CoreApp.h"
 
 PeerBox::PeerBox(QWidget *parent)
     : QWidget(parent)

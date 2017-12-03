@@ -160,7 +160,6 @@ QUuid CoreApp::getUidFromFile()
     QFile file(appUIDFile);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return uid;
-    qDebug() << file;
     QDataStream in(&file);
     in >> uid;
     file.close();
