@@ -1,40 +1,30 @@
 #ifndef SEEYOUCLIENT_H
 #define SEEYOUCLIENT_H
 
-#include <QDialog>
+#include <QObject>
 #include <QTcpSocket>
 #include <QDataStream>
 
 QT_BEGIN_NAMESPACE
-class QComboBox;
-class QLabel;
-class QLineEdit;
-class QPushButton;
 class QTcpSocket;
 class QNetworkSession;
 QT_END_NAMESPACE
 
 //! [0]
-class Client : public QDialog
+class Client : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Client(QWidget *parent = Q_NULLPTR);
+    explicit Client(QObject *parent = Q_NULLPTR);
 
 private slots:
-    void requestNewFortune();
+    void requestNewFortune(QString host);
     void readFortune();
     void displayError(QAbstractSocket::SocketError socketError);
-    void enableGetFortuneButton();
     void sessionOpened();
 
 private:
-    QComboBox *hostCombo;
-    QLineEdit *portLineEdit;
-    QLabel *statusLabel;
-    QPushButton *getFortuneButton;
-
     QTcpSocket *tcpSocket;
     QDataStream in;
     QString currentFortune;

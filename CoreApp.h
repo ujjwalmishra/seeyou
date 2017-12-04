@@ -9,6 +9,7 @@
 #include <QMap>
 #include <QUuid>
 #include "taskinfo.h"
+#include "TCPClient.h"
 #include <QVector>
 
 
@@ -31,6 +32,7 @@ public:
     QMap<QString, PeerInfo*> peers;
     QMap<QString, PeerBox*> peersUI;
     QMap<QString, QVector<TaskInfo>> peerTasks;
+
 
 public slots:
     //void checkLogin(QString&, QString&);

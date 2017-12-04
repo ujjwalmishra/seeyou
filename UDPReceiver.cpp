@@ -49,6 +49,5 @@ void Receiver::processPendingDatagrams()
             app->updateEvent(&task);
         }
     }
-qDebug() << "outa method";
 //! [2]
 }
