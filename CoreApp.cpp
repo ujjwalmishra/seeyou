@@ -58,8 +58,9 @@ void CoreApp::initApp(MainWindow &w)
 void CoreApp::addPeer(PeerInfo *peer)
 {
     CoreApp *app = CoreApp::getObject();
-    if(app->getPeerInfo().peerid.toString().compare(peer->peerid.toString()) != 0){
-        peers.insert(peer->peerid.toString(), peer);
+    if(app->getPeerInfo().peerid.toString().compare(peer->peerid.toString()) != 0)
+    {
+        app->peers.insert(peer->peerid.toString(), peer);
         PeerBox *box = app->win->addPeerUI(peer);
         app->peersUI.insert(peer->peerid.toString(), box);
     };
@@ -160,7 +161,6 @@ QUuid CoreApp::getUidFromFile()
     QFile file(appUIDFile);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         return uid;
-    qDebug() << file;
     QDataStream in(&file);
     in >> uid;
     file.close();

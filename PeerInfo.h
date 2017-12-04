@@ -11,7 +11,6 @@ class PeerInfo
 public:
     PeerInfo();
     PeerInfo(QUuid uid);
-    ~PeerInfo();
     void generatePeerId();
     void setPeerState(PeerState state);
     void setPeerTCPIP(QString ip);

@@ -14,10 +14,6 @@ PeerInfo::PeerInfo(QUuid uid)
     peerid = uid;
 }
 
-PeerInfo::~PeerInfo()
-{
-
-}
 
 void PeerInfo::generatePeerId()
 {

@@ -32,7 +32,7 @@ void Receiver::processPendingDatagrams()
 //! [2]
 
     while (udpSocket->hasPendingDatagrams()) {
-        PeerInfo peerInfo;        
+        PeerInfo peerInfo;
         TaskInfo task;
         QString str;
         QByteArray datagram;
@@ -49,6 +49,6 @@ void Receiver::processPendingDatagrams()
             app->updateEvent(&task);
         }
     }
-
+qDebug() << "outa method";
 //! [2]
 }
