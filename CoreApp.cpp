@@ -60,8 +60,9 @@ void CoreApp::addPeer(PeerInfo &peer)
     CoreApp *app = CoreApp::getObject();
     if(app->getPeerInfo()->peerid.toString().compare(peer.peerid.toString()) != 0)
     {
-        app->peers.insert(peer.peerid.toString(), &peer);
-        PeerBox *box = app->win->addPeerUI(&peer);
+        PeerInfo *peerN = new PeerInfo(peer);
+        app->peers.insert(peer.peerid.toString(), peerN);
+        PeerBox *box = app->win->addPeerUI(peerN);
         app->peersUI.insert(peer.peerid.toString(), box);
     };
 

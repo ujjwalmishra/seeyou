@@ -33,6 +33,7 @@ public:
     void setLatestTask(TaskInfo* task);
     void updateEvent(TaskInfo *task);
     void initTasks(MainWindow &w);
+    void checkStuff(QString & uid);
     PeerInfo * getPeerInfo();
     TaskInfo * getLatestTask();
     QMap<QString, PeerInfo*> peers; //Peers PeerInfo objects
