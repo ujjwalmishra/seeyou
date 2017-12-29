@@ -55,16 +55,15 @@ void CoreApp::initApp(MainWindow &w)
     initTasks(w);
 }
 
-void CoreApp::addPeer(PeerInfo *peer)
+void CoreApp::addPeer(PeerInfo &peer)
 {
     CoreApp *app = CoreApp::getObject();
-    if(app->getPeerInfo().peerid.toString().compare(peer->peerid.toString()) != 0)
+    if(app->getPeerInfo()->peerid.toString().compare(peer.peerid.toString()) != 0)
     {
-        app->peers.insert(peer->peerid.toString(), peer);
-        PeerBox *box = app->win->addPeerUI(peer);
-        app->peersUI.insert(peer->peerid.toString(), box);
+        app->peers.insert(peer.peerid.toString(), &peer);
+        PeerBox *box = app->win->addPeerUI(&peer);
+        app->peersUI.insert(peer.peerid.toString(), box);
     };
-    //app->peers.insert(peer->peerid.toString(), peer);
 
 }
 
@@ -82,9 +81,9 @@ void CoreApp::addTCPServerID(QString string)
     peerInfo->setPeerTCPIP(string);
 }
 
-PeerInfo & CoreApp::getPeerInfo()
+PeerInfo * CoreApp::getPeerInfo()
 {
-    return *peerInfo;
+    return peerInfo;
 }
 
 void CoreApp::initTasks(MainWindow &w)
@@ -108,7 +107,7 @@ void CoreApp::setLatestTask(TaskInfo *task)
 void CoreApp::updateEvent(TaskInfo *task)
 {
     CoreApp *app = CoreApp::getObject();
-    if(app->getPeerInfo().peerid.toString().compare(task->peerid.toString()) != 0){
+    if(app->getPeerInfo()->peerid.toString().compare(task->peerid.toString()) != 0){
 
         PeerBox *box = app->peersUI.value(task->peerid.toString());
 
@@ -142,7 +141,7 @@ void CoreApp::initTCPServer(MainWindow &w)
 void CoreApp::initSelfState()
 {
     QUuid uid = getUidFromFile();
-    a                         ccfffffffffffffffffffffffffffffffffffffffc = new PeerInfo();
+    peerInfo = new PeerInfo();
     peerInfo->setPeerName(username);
     if(!uid.isNull()) {
         peerInfo->peerid = uid;

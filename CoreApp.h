@@ -27,12 +27,13 @@ public:
     static CoreApp *getObject(MainWindow &w, QString name);
     static CoreApp *getObject();
     void broadCastSelfState(MainWindow &w);
-    void addPeer(PeerInfo *peer);
+    void addPeer(PeerInfo &peer);
     void removePeer(QString uid);
     void addTCPServerID(QString string);  
     void setLatestTask(TaskInfo* task);
     void updateEvent(TaskInfo *task);
-    void initTasks(MainWindow &w);  PeerInfo & getPeerInfo();
+    void initTasks(MainWindow &w);
+    PeerInfo * getPeerInfo();
     TaskInfo * getLatestTask();
     QMap<QString, PeerInfo*> peers; //Peers PeerInfo objects
     QMap<QString, PeerBox*> peersUI; //Reference to UI Objects to remove later

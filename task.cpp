@@ -43,7 +43,7 @@ void Task::init()
 void Task::addTask()
 {
     CoreApp *app = CoreApp::getObject();
-    QUuid uid = app->getPeerInfo().peerid;
+    QUuid uid = app->getPeerInfo()->peerid;
     task = new TaskInfo(uid);
     task->setTaskName(taskName);
     app->setLatestTask(task);

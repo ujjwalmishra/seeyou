@@ -5,15 +5,19 @@
 #include <QDebug>
 
 PeerInfo::PeerInfo()
-{
-
+{    
+    qDebug() << "Peer created 1";
 }
 
 PeerInfo::PeerInfo(QUuid uid)
 {
+    qDebug() << "Peer created";
     peerid = uid;
 }
 
+PeerInfo::~PeerInfo() {
+    qDebug() << "Peer Destroyed";
+}
 
 void PeerInfo::generatePeerId()
 {

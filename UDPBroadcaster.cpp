@@ -27,14 +27,14 @@ void UDPBroadcaster::setMessageType(QString type)
 void UDPBroadcaster::broadcastDatagram()
 {
     CoreApp *app = CoreApp::getObject();
-    PeerInfo peerInfo = app->getPeerInfo();
+    //PeerInfo peerInfo = app->getPeerInfo();
     TaskInfo *task = app->getLatestTask();
     QByteArray datagram;
     QDataStream out(&datagram, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_1);
     if(mType.compare("p") == 0){
         out << QString("p");
-        out << peerInfo;
+        out << *app->getPeerInfo();
     }
     if(mType.compare("e") == 0) {
         out << QString("e");

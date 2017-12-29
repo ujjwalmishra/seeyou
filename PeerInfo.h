@@ -10,6 +10,7 @@ class PeerInfo
 
 public:
     PeerInfo();
+    ~PeerInfo();
     PeerInfo(QUuid uid);
     void generatePeerId();
     void setPeerState(PeerState state);

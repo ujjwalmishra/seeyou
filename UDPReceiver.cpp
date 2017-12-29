@@ -42,7 +42,7 @@ void Receiver::processPendingDatagrams()
         in >> str ;
         if (str.compare("p") == 0) {
             in >> peerInfo;
-            app->addPeer(&peerInfo);
+            app->addPeer(peerInfo);
         }
         if (str.compare("e") == 0) {
             in >> task;
