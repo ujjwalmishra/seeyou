@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    LoginDialog* loginDialog = new LoginDialog();
+    LoginDialog* loginDialog;
     loginDialog->setUsername( "Luca" ); // optional
    // int result = loginDialog->exec();
     if(true){

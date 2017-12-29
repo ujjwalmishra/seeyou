@@ -9,8 +9,7 @@
 #include <QString>
 
 CoreApp * CoreApp::myInstance = nullptr;
-CoreApp::CoreApp(QObject *parent)
-    : QObject(parent)
+CoreApp::CoreApp()
 {
 
 }
@@ -24,6 +23,7 @@ CoreApp::CoreApp(MainWindow &w, QString name)
 
 CoreApp::~CoreApp()
 {
+    delete myInstance;
     delete peerInfo;
     delete peerData;
 }
@@ -142,7 +142,7 @@ void CoreApp::initTCPServer(MainWindow &w)
 void CoreApp::initSelfState()
 {
     QUuid uid = getUidFromFile();
-    peerInfo = new PeerInfo();
+    a                         ccfffffffffffffffffffffffffffffffffffffffc = new PeerInfo();
     peerInfo->setPeerName(username);
     if(!uid.isNull()) {
         peerInfo->peerid = uid;

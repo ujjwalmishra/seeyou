@@ -1,3 +1,9 @@
+/*
+ *Core functionality - Maintains global state of application
+ *
+ *
+ */
+
 #ifndef COREAPP_H
 #define COREAPP_H
 
@@ -13,50 +19,45 @@
 #include <QVector>
 
 
-class CoreApp : public QObject
+
+class CoreApp
 {
-    Q_OBJECT
 public:
-    ~CoreApp();
-    void broadCastSelfState(MainWindow &w);
-    PeerInfo & getPeerInfo();
-    void addPeer(PeerInfo *peer);
-    void removePeer(QString uid);
-    void addTCPServerID(QString string);
-    TaskInfo * getLatestTask();
-    void setLatestTask(TaskInfo* task);
-    void updateEvent(TaskInfo *task);
-    void initTasks(MainWindow &w);
+    ~CoreApp();    
     static CoreApp *getObject(MainWindow &w, QString name);
     static CoreApp *getObject();
-    QMap<QString, PeerInfo*> peers;
-    QMap<QString, PeerBox*> peersUI;
-    QMap<QString, QVector<TaskInfo>> peerTasks;
+    void broadCastSelfState(MainWindow &w);
+    void addPeer(PeerInfo *peer);
+    void removePeer(QString uid);
+    void addTCPServerID(QString string);  
+    void setLatestTask(TaskInfo* task);
+    void updateEvent(TaskInfo *task);
+    void initTasks(MainWindow &w);  PeerInfo & getPeerInfo();
+    TaskInfo * getLatestTask();
+    QMap<QString, PeerInfo*> peers; //Peers PeerInfo objects
+    QMap<QString, PeerBox*> peersUI; //Reference to UI Objects to remove later
+    QMap<QString, QVector<TaskInfo>> peerTasks; //Peer wise tasks vector list
 
-
-public slots:
-    //void checkLogin(QString&, QString&);
 
 private:
-    CoreApp(QObject *parent = 0);
-    CoreApp(MainWindow &w, QString name);
+    CoreApp();
+    CoreApp(MainWindow &w, QString name);    
+    static CoreApp *myInstance;
     void initApp(MainWindow &w);
     void initTCPServer(MainWindow &w);
     void initSelfState();
-    MainWindow *win;
     void initStateReceiver();
     void initTCPClient();
     QUuid getUidFromFile();
-    void writeUidToFile(QUuid uid);
+    void writeUidToFile(QUuid uid);    
+    MainWindow *win;
     QString appUIDFile;
     QString username;
     PeerInfo *peerInfo;
     PeerData *peerData;
     Receiver *rcvr;
     TaskInfo *latestTask;
-    static CoreApp *myInstance;
     UDPBroadcaster * discoverer;
-    //Database
 };
 
 
