@@ -77,7 +77,6 @@ void PeerBox::removePeer()
 {
 
     CoreApp *app = CoreApp::getObject();
-    app->checkStuff(pUid.toString());
     app->removePeer(pUid.toString());
 }
 

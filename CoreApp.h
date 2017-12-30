@@ -27,7 +27,7 @@ public:
     static CoreApp *getObject(MainWindow &w, QString name);
     static CoreApp *getObject();
     void broadCastSelfState(MainWindow &w);
-    void addPeer(PeerInfo &peer);
+    void addPeer(const PeerInfo &peer);
     void removePeer(QString uid);
     void addTCPServerID(QString string);  
     void setLatestTask(TaskInfo* task);

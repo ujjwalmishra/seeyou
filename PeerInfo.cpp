@@ -6,12 +6,11 @@
 
 PeerInfo::PeerInfo()
 {    
-    qDebug() << "Peer created 1";
+
 }
 
 PeerInfo::PeerInfo(QUuid uid)
 {
-    qDebug() << "Peer created";
     peerid = uid;
 }
 
@@ -56,7 +55,7 @@ QDataStream& operator<<(QDataStream &out, PeerInfo &s)
 // istream, >> overloading
 QDataStream& operator>>(QDataStream &in, PeerInfo &s)
 {
-    s = PeerInfo();
+    //s = PeerInfo();
     in >> s.peerid >> s.state >> s.tcpip >> s.username;
     return in;
 }

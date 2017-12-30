@@ -55,7 +55,7 @@ void CoreApp::initApp(MainWindow &w)
     initTasks(w);
 }
 
-void CoreApp::addPeer(PeerInfo &peer)
+void CoreApp::addPeer(const PeerInfo &peer)
 {
     CoreApp *app = CoreApp::getObject();
     if(app->getPeerInfo()->peerid.toString().compare(peer.peerid.toString()) != 0)
