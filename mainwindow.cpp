@@ -125,6 +125,7 @@ PeerBox* MainWindow::addPeerUI(PeerInfo *peer){
 void MainWindow::removePeerUI(PeerBox *box)
 {
     peersLayout->removeWidget(box);
+    delete box;
     update();
 }
 

@@ -75,6 +75,9 @@ void CoreApp::removePeer(QString uid)
 
     app->win->removePeerUI(box);
     app->peersUI.remove(uid);
+    QMap<QString, PeerInfo*>::Iterator it = app->peers.find(uid);
+    app->peers.erase(it);
+    qDebug() << app->peers.size();
 }
 
 void CoreApp::addTCPServerID(QString string)
